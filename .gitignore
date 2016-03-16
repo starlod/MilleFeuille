@@ -1,3 +1,9 @@
+# Common
+*~
+.DS_Store
+Thumbs.db
+Session.vim
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -24,10 +30,9 @@
 
 # Assets and user uploads
 /web/bundles/
-/web/uploads/
-
-# Assets managed by Bower
-/web/assets/vendor/
+/web/assets/
+/web/css/
+/web/js/
 
 # PHPUnit
 /app/phpunit.xml
@@ -38,3 +43,6 @@
 
 # Composer PHAR
 /composer.phar
+/composer.lock
+
+!.gitkeep
