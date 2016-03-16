@@ -1,0 +1,23 @@
+{
+  "name": "MilleFeuille",
+  "homepage": "https://www.starlod.net",
+  "authors": [
+    "yuki <starlod.ggl@gmail.com>"
+  ],
+  "description": "",
+  "main": "web/app.php",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2"
+  }
+}
