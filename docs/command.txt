@@ -1,0 +1,22 @@
+# データベース&ユーザー作成
+> CREATE DATABASE millefeuille CHARACTER SET utf8;
+> grant all privileges on millefeuille.* to millefeuille@localhost identified by 'millefeuille';
+
+# バンドル作成
+
+# データベース削除
+$ php app/console doctrine:database:drop --force
+
+# データベース作成
+$ php app/console doctrine:database:create
+
+# エンティティ作成
+$ php app/console generate:doctrine:entity --entity=AppBlogBundle:Post
+
+# エンティティからテーブルスキーマの作成
+$ php app/console doctrine:schema:update --force
+
+$ php app/console doctrine:generate:crud --entity=AppBlogBundle:Post --with-write
+
+# Assetsインストールコマンド
+$ composer require symfony/assetic-bundle
