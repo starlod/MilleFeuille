@@ -15,7 +15,7 @@ use App\BlogBundle\Form\PostType;
  *
  * @Route("/post")
  */
-class PostController extends Controller
+class PostController extends AppController
 {
     /**
      * Lists all Post entities.
