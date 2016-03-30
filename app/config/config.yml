@@ -22,6 +22,9 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
+    assets:
+        version: '%app_version%'
+        version_format: '%%s?version=%%s'
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -35,6 +38,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        version: "%app_version%"
 
 # Doctrine Configuration
 doctrine:
