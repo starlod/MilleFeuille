@@ -1,19 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'AppBlogBundle::layout.html.twig' %}
 
-{% block body %}
-    <h1>Post list</h1>
+{% block title %}記事一覧{% endblock %}
+
+{% block article %}
+    <h1>記事一覧</h1>
 
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Parentid</th>
-                <th>Type</th>
-                <th>Status</th>
                 <th>Title</th>
                 <th>Content</th>
-                <th>Metatitle</th>
-                <th>Metadescription</th>
                 <th>Createdat</th>
                 <th>Updatedat</th>
                 <th>Actions</th>
@@ -23,22 +20,17 @@
         {% for post in posts %}
             <tr>
                 <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.id }}</a></td>
-                <td>{{ post.parentId }}</td>
-                <td>{{ post.type }}</td>
-                <td>{{ post.status }}</td>
                 <td>{{ post.title }}</td>
                 <td>{{ post.content }}</td>
-                <td>{{ post.metaTitle }}</td>
-                <td>{{ post.metaDescription }}</td>
                 <td>{% if post.createdAt %}{{ post.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
+                            <a href="{{ path('post_show', { 'id': post.id }) }}">表示</a>
                         </li>
                         <li>
-                            <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}">編集</a>
                         </li>
                     </ul>
                 </td>
@@ -49,7 +41,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('post_new') }}">Create a new entry</a>
+            <a href="{{ path('post_new') }}">新しい記事を書く</a>
         </li>
     </ul>
+
 {% endblock %}
