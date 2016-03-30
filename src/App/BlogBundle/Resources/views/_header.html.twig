@@ -4,7 +4,7 @@
 {# Site Title #}
 <div class="row">
     <div class="col-sm-10">
-        <h1>サイト名</h1>
+        <h1>{{ 'header.title'|trans }}</h1>
     </div>
     {% if is_granted('ROLE_USER') %}
         <div class="col-sm-2">
