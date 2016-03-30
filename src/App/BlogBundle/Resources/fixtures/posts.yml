@@ -1,0 +1,15 @@
+# How to use
+# https://github.com/fzaninotto/Faker#formatters
+# https://github.com/nelmio/alice/blob/master/README.md#faker-data
+
+App\BlogBundle\Entity\Post:
+    post_{1...201}:
+        parentId: null
+        type: 0
+        status: 0
+        title: <word()>
+        content: <text()>
+        metaTitle: <word()>
+        metaDescription: <text()>
+        createdAt: <dateTimeBetween('-10 days', 'now')>
+        updatedAt: <dateTimeBetween($createdAt, 'now')>
