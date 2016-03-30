@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use App\BlogBundle\Entity\Post;
 use App\BlogBundle\Form\PostType;
 
@@ -21,6 +22,7 @@ class PostController extends Controller
      *
      * @Route("/", name="post_index")
      * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -28,9 +30,9 @@ class PostController extends Controller
 
         $posts = $em->getRepository('AppBlogBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return array(
             'posts' => $posts,
-        ));
+        );
     }
 
     /**
@@ -38,6 +40,7 @@ class PostController extends Controller
      *
      * @Route("/new", name="post_new")
      * @Method({"GET", "POST"})
+     * @Template()
      */
     public function newAction(Request $request)
     {
@@ -53,10 +56,10 @@ class PostController extends Controller
             return $this->redirectToRoute('post_show', array('id' => $post->getId()));
         }
 
-        return $this->render('post/new.html.twig', array(
+        return array(
             'post' => $post,
             'form' => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -64,15 +67,16 @@ class PostController extends Controller
      *
      * @Route("/{id}", name="post_show")
      * @Method("GET")
+     * @Template()
      */
     public function showAction(Post $post)
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return array(
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -80,6 +84,7 @@ class PostController extends Controller
      *
      * @Route("/{id}/edit", name="post_edit")
      * @Method({"GET", "POST"})
+     * @Template()
      */
     public function editAction(Request $request, Post $post)
     {
@@ -95,11 +100,11 @@ class PostController extends Controller
             return $this->redirectToRoute('post_edit', array('id' => $post->getId()));
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return array(
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
