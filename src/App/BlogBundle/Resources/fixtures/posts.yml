@@ -7,9 +7,9 @@ App\BlogBundle\Entity\Post:
         parentId: null
         type: 0
         status: 0
-        title: <word()>
+        title: <title()>
         content: <text()>
-        metaTitle: <word()>
-        metaDescription: <text()>
+        metaTitle: $title
+        metaDescription: $content
         createdAt: <dateTimeBetween('-10 days', 'now')>
         updatedAt: <dateTimeBetween($createdAt, 'now')>
