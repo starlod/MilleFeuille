@@ -3,11 +3,11 @@ require 'compass/import-once/activate'
 
 # プロジェクトのディレクトリをここにセットする
 http_path       = '/'
-css_dir         = 'src/App/BlogBundle/Resources/public/css'    # CSSを書き出すディレクトリ
-sass_dir        = 'src/App/BlogBundle/Resources/public/scss'   # SASSファイルがあるディレクトリ
-images_dir      = 'src/App/BlogBundle/Resources/public/images' # 画像用のディレクトリ
-javascripts_dir = 'src/App/BlogBundle/Resources/public/js'     # JavaScriptファイル用のディレクトリ
-cache_dir       = '../.sass-cache'                             # キャッシュ用のディレクトリ
+css_dir         = 'src/AppBundle/Resources/public/css'    # CSSを書き出すディレクトリ
+sass_dir        = 'src/AppBundle/Resources/public/scss'   # SASSファイルがあるディレクトリ
+images_dir      = 'src/AppBundle/Resources/public/images' # 画像用のディレクトリ
+javascripts_dir = 'src/AppBundle/Resources/public/js'     # JavaScriptファイル用のディレクトリ
+cache_dir       = '../.sass-cache'                        # キャッシュ用のディレクトリ
 
 # アウトプットスタイルの選択（利用するスタイルのコメントを外して利用する）（デフォルト：expanded）
 # output_style = :expanded   # 通常のアウトプットスタイル

@@ -1,0 +1,81 @@
+# Symfony
+Bad credentials.: ログインに失敗しました。
+
+# ヘッダー
+header:
+    title: サイトタイトル
+
+# フッター
+footer:
+    copyright: Copyright © 2016 Unlimited Black Company All Rights Reserved.
+
+# ボタン系
+button:
+    index: 一覧
+    find: 検索
+    new: 登録
+    edit: 編集
+    show: 表示
+    upload: アップロード
+    download: ダウンロード
+    delete: 削除
+    onCreate: 作成する
+    onUpdate: 更新する
+    onRegist: 登録する
+    close: 閉じる
+    back: 戻る
+    choice: 選択
+    readme: 続きを読む
+
+# アラート系
+alert:
+    lead:
+        info: Info
+        success: Success
+        warning: Warning
+        danger: Error
+    # 通常メッセージ
+    info:
+        file:
+            nothing: アップロードされたファイルはありません。
+            nameInput: ファイル名を変更する場合は変更してください。
+    # 成功メッセージ
+    success:
+        created: 登録しました。
+        updated: 更新しました。
+        deleted: 削除しました。
+
+    # 警告メッセージ
+    warning:
+        findForm:
+            notBlank: 検索キーワードを入力してください。
+            notResult: 検索結果はありませんでした。
+    # エラーメッセージ
+    danger:
+
+# 表示系
+message:
+    pagination: <b>全 %all% 件</b> （ %from% ～ %to% 件までの %num% 件 を表示）
+
+# セキュリティ
+security:
+    login: ログイン
+    logout: ログアウト
+    username: ユーザー名
+    password: パスワード
+
+# AppBundle:Post
+post:
+    entity:
+        id: ID
+        parent_id: 親ID
+        type: 投稿種別
+        status: ステータス
+        title: タイトル
+        content: 投稿内容
+        metaTitle: メタタイトル
+        metaDescription: メタディスクリプション
+        createdAt: 作成日時
+        updatedAt: 更新日時
+    title:
+        index: 記事一覧

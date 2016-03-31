@@ -11,12 +11,12 @@ $ php app/console doctrine:database:drop --force
 $ php app/console doctrine:database:create
 
 # エンティティ作成
-$ php app/console generate:doctrine:entity --entity=AppBlogBundle:Post
+$ php app/console generate:doctrine:entity --entity=AppBundle:Post
 
 # エンティティからテーブルスキーマの作成
 $ php app/console doctrine:schema:update --force
 
-$ php app/console doctrine:generate:crud --entity=AppBlogBundle:Post --with-write
+$ php app/console doctrine:generate:crud --entity=AppBundle:Post --with-write
 
 # Assetsインストールコマンド
 $ composer require symfony/assetic-bundle

@@ -1,0 +1,37 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block title %}記事一覧{% endblock %}
+
+{% block article %}
+    <h1 class="h1">{{ 'post.title.index'|trans }}</h1>
+    {% for post in posts %}
+        <div class="post-item row">
+            <div class="post-image col-xs-12 col-md-12 col-lg-4">
+                <a href="{{ path('post_show', { 'id': post.id }) }}" class="">
+                    <img class="img-thumbnail center-block" src="http://placehold.jp/cc9999/993333/200x150.png?text={{ '＃' ~ post.id }}" alt="Card image cap">
+                </a>
+            </div>
+            <div class="post-overview col-xs-12 col-md-12 col-lg-8">
+                <h2 class="card-title"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
+                <div class="card-date{% if post.createdAt > date('-1 day') %} new{% endif %}">
+                    {% if post.createdAt > date('-1 day') %}<i class="fa fa-flag"></i>{% endif %}
+                    {# <time>{{ post.createdAt|fuzzy }}</time> #}
+                    <time>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</time>
+                </div>
+                <div class="card-text"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.content|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}</a></div>
+                    <ul class="list-inline">
+                        <li class="pull-right"><a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary btn-sm">{{ 'button.readme'|trans }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% if loop.last == false %}<hr>{% endif %}
+        </div>
+    {% endfor %}
+
+    <ul>
+        <li>
+            <a href="{{ path('post_new') }}">新しい記事を書く</a>
+        </li>
+    </ul>
+
+{% endblock %}
