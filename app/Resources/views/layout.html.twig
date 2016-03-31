@@ -35,14 +35,14 @@
 
 {% block body %}
     <header class="header container container-full m-b">
-        {% include 'AppBundle::_header.html.twig' %}
+        {% include '::_header.html.twig' %}
         <nav>
-            {% include 'AppBundle::_nav.html.twig' %}
+            {% include '::_nav.html.twig' %}
         </nav>
     </header>
     <main class="{% block mainClass %}main container container-lg{% endblock %}">
         <aside>
-            {% include 'AppBundle::_alert.html.twig' %}
+            {% include '::_alert.html.twig' %}
         </aside>
         <article>
             {% block article %}{% endblock %}
@@ -72,6 +72,6 @@
         </aside>
     </div>
     <footer>
-        {% include 'AppBundle::_footer.html.twig' %}
+        {% include '::_footer.html.twig' %}
     </footer>
 {% endblock %}
