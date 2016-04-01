@@ -13,10 +13,10 @@
             </div>
             <div class="post-overview col-xs-12 col-md-12 col-lg-8">
                 <h2 class="card-title"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
-                <div class="card-date{% if post.createdAt > date('-1 day') %} new{% endif %}">
-                    {% if post.createdAt > date('-1 day') %}<i class="fa fa-flag"></i>{% endif %}
-                    {# <time>{{ post.createdAt|fuzzy }}</time> #}
-                    <time>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</time>
+                <div class="card-date{% if post.publishedAt > date('-1 day') %} new{% endif %}">
+                    {% if post.publishedAt > date('-1 day') %}<i class="fa fa-flag"></i>{% endif %}
+                    {# <time>{{ post.publishedAt|fuzzy }}</time> #}
+                    <time>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</time>
                 </div>
                 <div class="card-text"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.content|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}</a></div>
                     <ul class="list-inline">

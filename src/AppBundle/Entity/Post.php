@@ -21,7 +21,7 @@ class Post
      */
     private $id;
 
-    /**
+    /**1
      * @var int
      *
      * @ORM\Column(name="parent_id", type="integer", nullable=true)
@@ -69,6 +69,13 @@ class Post
      * @ORM\Column(name="meta_description", type="text", nullable=true)
      */
     private $metaDescription;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    private $publishedAt;
 
     /**
      * @var \DateTime
@@ -254,6 +261,29 @@ class Post
     public function getMetaDescription()
     {
         return $this->metaDescription;
+    }
+
+    /**
+     * Set publishedAt
+     *
+     * @param \DateTime $publishedAt
+     * @return Post
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get publishedAt
+     *
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
     }
 
     /**
