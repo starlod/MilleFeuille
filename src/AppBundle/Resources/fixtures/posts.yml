@@ -8,8 +8,9 @@ AppBundle\Entity\Post:
         type: 0
         status: 0
         title: <title()>
-        content: <text()>
+        content: <content($title)>
         metaTitle: $title
         metaDescription: $content
+        publishedAt: <dateTimeBetween('-10 days', 'now')>
         createdAt: <dateTimeBetween('-10 days', 'now')>
         updatedAt: <dateTimeBetween($createdAt, 'now')>
