@@ -2,7 +2,7 @@
 
 namespace AppBundle;
 
-class Constant
+class Constants
 {
     // ホームページ
     const HOME_URL = 'post_index';

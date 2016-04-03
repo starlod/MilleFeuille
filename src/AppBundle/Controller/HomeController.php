@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Constant;
+use AppBundle\Constants;
 
 /**
  * ホーム
@@ -17,6 +17,6 @@ class HomeController extends AppController
      */
     public function indexAction()
     {
-        return $this->redirectToRoute(Constant::HOME_URL);
+        return $this->redirectToRoute(Constants::HOME_URL);
     }
 }
