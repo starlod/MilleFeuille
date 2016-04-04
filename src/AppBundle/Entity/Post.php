@@ -77,6 +77,15 @@ class Post extends AppEntity
      */
     private $publishedAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="posts")
+     * @ORM\JoinTable(name="posts_categories")
+     */
+    private $categories;
+
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -270,5 +279,38 @@ class Post extends AppEntity
     public function getPublishedAt()
     {
         return $this->publishedAt;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \AppBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function addCategory(\AppBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \AppBundle\Entity\Category $categories
+     */
+    public function removeCategory(\AppBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

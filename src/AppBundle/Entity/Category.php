@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Category
  *
- * @ORM\Table(name="category")
+ * @ORM\Table(name="categories")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
 class Category extends AppEntity
@@ -49,6 +49,14 @@ class Category extends AppEntity
      */
     private $parentId;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="posts")
+     */
+    private $posts;
+
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -150,5 +158,38 @@ class Category extends AppEntity
     public function getParentId()
     {
         return $this->parentId;
+    }
+
+    /**
+     * Add posts
+     *
+     * @param \AppBundle\Entity\Post $posts
+     * @return Category
+     */
+    public function addPost(\AppBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param \AppBundle\Entity\Post $posts
+     */
+    public function removePost(\AppBundle\Entity\Post $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Get posts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 }
