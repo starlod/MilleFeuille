@@ -68,10 +68,12 @@ class CategoryController extends Controller
     public function showAction(Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
+        $count = count($category->getPosts());
 
         return $this->render('category/show.html.twig', array(
             'category' => $category,
             'delete_form' => $deleteForm->createView(),
+            'count' => $count,
         ));
     }
 

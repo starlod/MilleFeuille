@@ -45,17 +45,24 @@ class Category extends AppEntity
     /**
      * @var int
      *
+     * @ORM\Column(name="count_posts", type="integer", nullable=false)
+     */
+    private $countPosts = 0;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="parent_id", type="integer", nullable=true)
      */
     private $parentId;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Post", mappedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Post", mappedBy="categories")
      */
     private $posts;
 
     public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -158,6 +165,29 @@ class Category extends AppEntity
     public function getParentId()
     {
         return $this->parentId;
+    }
+
+    /**
+     * Set countPosts
+     *
+     * @param integer $countPosts
+     * @return Category
+     */
+    public function setCountPosts($countPosts)
+    {
+        $this->countPosts = $countPosts;
+
+        return $this;
+    }
+
+    /**
+     * Get countPosts
+     *
+     * @return integer
+     */
+    public function getCountPosts()
+    {
+        return $this->countPosts;
     }
 
     /**
