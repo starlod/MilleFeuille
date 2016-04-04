@@ -7,3 +7,7 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    my.listener:
+        class: AppBundle\Listener\PostsCounter
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
