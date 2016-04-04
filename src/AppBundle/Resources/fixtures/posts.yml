@@ -14,3 +14,5 @@ AppBundle\Entity\Post:
         publishedAt: <dateTimeBetween('-10 days', 'now')>
         createdAt: <dateTimeBetween('-10 days', 'now')>
         updatedAt: <dateTimeBetween($createdAt, 'now')>
+        # categories: <categories(['anime'])>
+        categories: <categories()>

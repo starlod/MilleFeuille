@@ -1,8 +1,7 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace AppBundle\Repository;
 
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Constants;
 

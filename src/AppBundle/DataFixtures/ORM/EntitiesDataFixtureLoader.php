@@ -10,10 +10,10 @@ use Faker\Factory;
  */
 class EntitiesDataFixtureLoader extends DataFixtureLoader
 {
-    private $faker;
+    protected $faker;
 
-    private $posts = array();
-    private $comments = array();
+    protected $posts = array();
+    protected $comments = array();
 
     public function __construct()
     {
@@ -103,6 +103,7 @@ class EntitiesDataFixtureLoader extends DataFixtureLoader
     protected function getFixtures()
     {
         return array(
+            __DIR__ . '/../../Resources/fixtures/categories.yml',
             __DIR__ . '/../../Resources/fixtures/posts.yml',
         );
     }
@@ -120,5 +121,12 @@ class EntitiesDataFixtureLoader extends DataFixtureLoader
     public function comment()
     {
         return $this->comments[array_rand($this->comments)];
+    }
+
+    public function categories($slugs = array())
+    {
+        $em = $this->container->get('doctrine')->getManager();
+        $categories = $em->getRepository('AppBundle:Category')->getCategories($slugs);
+        return $categories;
     }
 }

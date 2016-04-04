@@ -1,0 +1,32 @@
+# How to use
+# https://github.com/fzaninotto/Faker#formatters
+# https://github.com/nelmio/alice/blob/master/README.md#faker-data
+
+AppBundle\Entity\Category:
+    category_anime:
+        name: 'アニメ'
+        slug: 'anime'
+    category_technology:
+        name: '技術'
+        slug: 'technology'
+    category_diary:
+        name: '日記'
+        slug: 'diary'
+    category_shopping:
+        name: '買い物'
+        slug: 'shopping'
+    category_game:
+        name: 'ゲーム'
+        slug: 'game'
+    category_event:
+        name: '交流会'
+        slug: 'event'
+    category_politics:
+        name: '政治'
+        slug: 'politics'
+    category_comic:
+        name: '漫画'
+        slug: 'comic'
+    category_movie:
+        name: '映画'
+        slug: 'movie'
