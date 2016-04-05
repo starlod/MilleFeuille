@@ -8,7 +8,7 @@
     </div>
     {% if is_granted('ROLE_USER') %}
         <div class="col-sm-2">
-            <p class="text-right">{{ app.user.getName() }} さん ようこそ！</p>
+            <p class="text-right">{{ app.user.getUsername() }} さん ようこそ！</p>
         </div>
     {% endif %}
 </div>
