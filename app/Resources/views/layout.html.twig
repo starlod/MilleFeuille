@@ -1,20 +1,20 @@
 {% extends '::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}">
 
 {#
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/vendor/normalize-css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datetimepicker/jquery.datetimepicker.css') }}">
 #}
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/app/js/script.js') }}"></script>
     <noscript>
         <style type="text/css">
@@ -25,9 +25,9 @@
     </noscript>
 
 {#
-    <script type="text/javascript" src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/php-date-formatter/js/php-date-formatter.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/datetimepicker/jquery.datetimepicker.js') }}"></script>
 #}
@@ -35,43 +35,37 @@
 
 {% block body %}
     <header class="header container container-full m-b">
-        {% include '::_header.html.twig' %}
         <nav>
             {% include '::_nav.html.twig' %}
         </nav>
+        {% include '::_header.html.twig' %}
     </header>
     <main class="{% block mainClass %}main container container-lg{% endblock %}">
-        <aside>
-            {% include '::_alert.html.twig' %}
-        </aside>
-        <article>
-            {% block fos_user_content %}{% endblock %}
-            {% block article %}{% endblock %}
-        </article>
-        <aside>
-            {# 参考リンク #}
-        </aside>
-        <aside>
-            {# 関連記事 #}
-        </aside>
-        <aside>
-            {# 前の記事、次の記事 #}
-        </aside>
-        <aside>
-            {# コメント一覧 #}
-        </aside>
-        <aside>
-            {# コメント投稿 #}
-        </aside>
+        {% block main %}
+            <div class="content">
+                <aside>
+                    {% include '::_alert.html.twig' %}
+                </aside>
+                <article>
+                    {% block fos_user_content %}{% endblock %}
+                    {% block article %}{% endblock %}
+                </article>
+                {% block referenceLink %}{# 参考リンク #}{% endblock %}
+                {% block relatedLink %}{# 関連記事リンク #}{% endblock %}
+                {% block aroundLink %}{# 前後記事リンク #}{% endblock %}
+                {% block commentsList %}{# コメント一覧 #}{% endblock %}
+                {% block commentsPost %}{# コメント投稿 #}{% endblock %}
+            </div>
+            <div class="sidebar">
+                <aside>
+                    {# サイト内検索 #}
+                </aside>
+                <aside>
+                    {# 最近の投稿 #}
+                </aside>
+            </div>
+        {% endblock %}
     </main>
-    <div class="sidebar">
-        <aside>
-            {# サイト内検索 #}
-        </aside>
-        <aside>
-            {# 最近の投稿 #}
-        </aside>
-    </div>
     <footer>
         {% include '::_footer.html.twig' %}
     </footer>
