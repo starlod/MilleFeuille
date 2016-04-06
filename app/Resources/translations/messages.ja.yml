@@ -1,6 +1,33 @@
 # Symfony
 Bad credentials.: ログインに失敗しました。
 
+# ルーティング
+category_index: カテゴリ一覧
+category_new: カテゴリ追加
+category_show: カテゴリ表示
+category_edit: カテゴリ編集
+category_delete: カテゴリ削除
+home: ホーム
+post_index: 記事一覧
+post_new: 記事投稿
+post_show: 記事表示
+post_edit: 記事編集
+post_delete: 記事削除
+fos_user_security_login: ログイン
+fos_user_security_check: ログイン認証
+fos_user_security_logout: ログアウト
+fos_user_profile_show: プロフィール
+fos_user_profile_edit: プロフィール編集
+fos_user_registration_register: 会員登録
+fos_user_registration_check_email: メールチェック
+fos_user_registration_confirm: 会員登録入力確認
+fos_user_registration_confirmed: 会員登録入力確認済み
+fos_user_resetting_request: リセット
+fos_user_resetting_send_email: リセットメール送信
+fos_user_resetting_check_email: リセットメールチェック
+fos_user_resetting_reset: リセット
+fos_user_change_password: パスワード変更
+
 # ヘッダー
 header:
     title: サイトタイトル
