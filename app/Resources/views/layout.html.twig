@@ -45,6 +45,7 @@
             {% include '::_alert.html.twig' %}
         </aside>
         <article>
+            {% block fos_user_content %}{% endblock %}
             {% block article %}{% endblock %}
         </article>
         <aside>
