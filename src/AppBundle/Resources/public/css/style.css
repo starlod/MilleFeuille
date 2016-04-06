@@ -1,1 +1,34 @@
-.no-js{display:none}
+/* line 3, ../scss/style.scss */
+.no-js {
+  display: none;
+}
+
+/* line 7, ../scss/style.scss */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* line 13, ../scss/style.scss */
+main {
+  flex: 1;
+}
+
+/* line 18, ../scss/style.scss */
+.container.container-full {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 26, ../scss/style.scss */
+.container.container-lg {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
