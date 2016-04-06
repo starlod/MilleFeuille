@@ -41,30 +41,40 @@
         {% include '::_header.html.twig' %}
     </header>
     <main class="{% block mainClass %}main container container-lg{% endblock %}">
-        {% block main %}
-            <div class="content">
-                <aside>
-                    {% include '::_alert.html.twig' %}
-                </aside>
-                <article>
-                    {% block fos_user_content %}{% endblock %}
-                    {% block article %}{% endblock %}
-                </article>
-                {% block referenceLink %}{# 参考リンク #}{% endblock %}
-                {% block relatedLink %}{# 関連記事リンク #}{% endblock %}
-                {% block aroundLink %}{# 前後記事リンク #}{% endblock %}
-                {% block commentsList %}{# コメント一覧 #}{% endblock %}
-                {% block commentsPost %}{# コメント投稿 #}{% endblock %}
-            </div>
-            <div class="sidebar">
-                <aside>
-                    {# サイト内検索 #}
-                </aside>
-                <aside>
-                    {# 最近の投稿 #}
-                </aside>
-            </div>
-        {% endblock %}
+        <div class="row">
+            {% block main %}
+                <div class="content col-sm-9">
+                    <aside>
+                        {% include '::_alert.html.twig' %}
+                    </aside>
+                    <article>
+                        {% block fos_user_content %}{% endblock %}
+                        {% block article %}{% endblock %}
+                    </article>
+                    {% block referenceLink %}{# 参考リンク #}{% endblock %}
+                    {% block relatedLink %}{# 関連記事リンク #}{% endblock %}
+                    {% block aroundLink %}{# 前後記事リンク #}{% endblock %}
+                    {% block commentsList %}{# コメント一覧 #}{% endblock %}
+                    {% block commentsPost %}{# コメント投稿 #}{% endblock %}
+                </div>
+                <div class="sidebar col-sm-3">
+                    <aside class="sidebar_widget">
+                        {# サイト内検索 #}
+                        <h3 class="sidebar_headline">サイト内検索</h3>
+                        <form>
+                            <div>
+                                <label class="screen-reader-text" for="s">検索:</label>
+                                <input type="text" value="" name="s" id="s">
+                                <input type="submit" id="searchsubmit" value="検索">
+                            </div>
+                        </form>
+                    </aside>
+                    <aside>
+                        {# 最近の投稿 #}
+                    </aside>
+                </div>
+            {% endblock %}
+        </div>
     </main>
     <footer>
         {% include '::_footer.html.twig' %}

@@ -26,7 +26,7 @@ main {
 
 /* line 26, ../scss/style.scss */
 .container.container-lg {
-  max-width: 100%;
+  max-width: 80%;
   padding-left: 0;
   padding-right: 0;
   margin-left: 10px;

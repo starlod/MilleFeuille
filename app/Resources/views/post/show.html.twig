@@ -1,52 +1,17 @@
 {% extends '::layout.html.twig' %}
 
-{% block article %}
-    <h1>Post</h1>
+{% block title %}{{ post.metaTitle }}{% endblock %}
+{% block description %}{{ post.metaDescription }}{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Parentid</th>
-                <td>{{ post.parentId }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ post.type }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ post.status }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ post.content }}</td>
-            </tr>
-            <tr>
-                <th>Metatitle</th>
-                <td>{{ post.metaTitle }}</td>
-            </tr>
-            <tr>
-                <th>Metadescription</th>
-                <td>{{ post.metaDescription }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if post.createdAt %}{{ post.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block article %}
+    <h1>{{ post.title }}</h1>
+
+    公開日: {% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}
+    更新日: {% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}
+
+    <div>
+        {{ post.content|nl2br|raw }}
+    </div>
 
     <ul>
         <li>
