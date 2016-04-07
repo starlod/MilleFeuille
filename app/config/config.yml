@@ -25,6 +25,9 @@ framework:
     assets:
         version: '%app_version%'
         version_format: '%%s?version=%%s'
+        packages:
+            maxcdn:
+                base_urls: 'https://maxcdn.bootstrapcdn.com'
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
