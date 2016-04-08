@@ -30,3 +30,23 @@ main {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+// postEditor
+.postEditor {
+    input {
+        border: 1px solid #b6b6b6;
+        box-shadow: 0 0 3px rgba(0,0,0,.15);
+        width: 100%;
+    }
+    input:focus {
+        border: solid 1px #EEA34A;
+    }
+    textarea {
+        border: 1px solid #b6b6b6;
+        box-shadow: 0 0 3px rgba(0,0,0,.15);
+        width: 100%;
+    }
+    textarea:focus {
+        border: solid 1px #EEA34A;
+    }
+}

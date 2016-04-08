@@ -6,12 +6,10 @@
 {% block article %}
     <h1>{{ post.title }}</h1>
 
-    公開日: {% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}
-    更新日: {% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}
+    <i class="fa fa-clock-o"></i> {% if post.publishedAt %}<time pubdate="{{ post.publishedAt|date('Y-m-d H:i:s') }}">{{ post.publishedAt|date('Y.m.d') }}</time>{% endif %}<br>
+    <i class="fa fa-pencil"></i> {% if post.updatedAt %}<time pubdate="{{ post.updatedAt|date('Y-m-d H:i:s') }}">{{ post.updatedAt|date('Y.m.d') }}</time>{% endif %}
 
-    <div>
-        {{ post.content|nl2br|raw }}
-    </div>
+    <div>{{ post.content|markdown('sundown') }}</div>
 
     <ul>
         <li>
@@ -48,7 +46,9 @@
 
 {% block commentsList %}
     <aside>
-        {# コメント一覧 #}
+        <h3>コメント一覧</h3>
+        <div>名前</div>
+        <div>内容</div>
     </aside>
 {% endblock %}
 

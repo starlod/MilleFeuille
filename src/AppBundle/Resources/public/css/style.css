@@ -32,3 +32,24 @@ main {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+/* line 36, ../scss/style.scss */
+.postEditor input {
+  border: 1px solid #b6b6b6;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+/* line 41, ../scss/style.scss */
+.postEditor input:focus {
+  border: solid 1px #EEA34A;
+}
+/* line 44, ../scss/style.scss */
+.postEditor textarea {
+  border: 1px solid #b6b6b6;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+/* line 49, ../scss/style.scss */
+.postEditor textarea:focus {
+  border: solid 1px #EEA34A;
+}

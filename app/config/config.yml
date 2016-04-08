@@ -86,3 +86,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+# KnpMarkdownBundle Configuration
+
+# knp_markdown:
+# カスタムしたい時
+#     parser:
+#         service: my.parser.name

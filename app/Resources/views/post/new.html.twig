@@ -1,16 +1,41 @@
 {% extends '::layout.html.twig' %}
 
+{% block title %}{{ 'post.title.new'|trans }}{% endblock %}
+
 {% block article %}
-    <h1>Post creation</h1>
+    <h1>{{ 'post.title.new'|trans }}</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="postEditor">
+        <form method="POST" {{ form_enctype(form) }}>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form_widget(form.title) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form_widget(form.content) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form_widget(form.metaTitle) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form_widget(form.metaDescription) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    {{ form_widget(form.publishedAt, {'attr': {'class': 'date-picker'} }) }}
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="btn btn-primary" value="{{ 'button.new'|trans }}" />
+                </div>
+            </div>
+        </form>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

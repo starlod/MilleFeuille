@@ -91,6 +91,7 @@ security:
     username: ユーザー名
     password: パスワード
 
+
 # AppBundle:Post
 post:
     entity:
@@ -106,3 +107,6 @@ post:
         updatedAt: 更新日時
     title:
         index: 記事一覧
+        new: 記事投稿
+        edit: 記事編集
+        show: 記事表示
