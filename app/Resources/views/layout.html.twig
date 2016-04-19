@@ -20,6 +20,8 @@
     <script type="text/javascript" src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/php-date-formatter/js/php-date-formatter.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/datetimepicker/build/jquery.datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/gmaps/gmaps.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/app/js/script.js') }}"></script>
     <noscript>
         <style type="text/css">
@@ -28,7 +30,6 @@
             -->
         </style>
     </noscript>
-
 {#
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="{{ asset('assets/vendor/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -40,9 +41,6 @@
 
 {% block body %}
     <header class="header container container-full m-b">
-        <nav>
-            {% include '::_nav.html.twig' %}
-        </nav>
         {% include '::_header.html.twig' %}
     </header>
     <main class="{% block mainClass %}main container container-lg{% endblock %}">
