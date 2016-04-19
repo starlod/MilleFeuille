@@ -16,6 +16,47 @@ main {
 }
 
 /* line 18, ../scss/style.scss */
+.headerTop {
+  width: 100%;
+  height: 300px;
+  background-color: #ccc;
+}
+
+/* line 25, ../scss/style.scss */
+.footerTop {
+  margin: 0;
+  width: 100%;
+  height: 330px;
+  background-color: #333;
+}
+
+/* line 32, ../scss/style.scss */
+.footerBottom {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  background-color: #2a2a2a;
+}
+
+/* line 42, ../scss/style.scss */
+#copyright {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  color: #999;
+  font-style: italic;
+  letter-spacing: 1px;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* line 57, ../scss/style.scss */
 .container.container-full {
   max-width: 100%;
   padding-left: 0;
@@ -24,7 +65,7 @@ main {
   margin-right: 0;
 }
 
-/* line 26, ../scss/style.scss */
+/* line 65, ../scss/style.scss */
 .container.container-lg {
   max-width: 80%;
   padding-left: 0;
@@ -33,23 +74,23 @@ main {
   margin-right: 10px;
 }
 
-/* line 36, ../scss/style.scss */
+/* line 75, ../scss/style.scss */
 .postEditor input {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 41, ../scss/style.scss */
+/* line 80, ../scss/style.scss */
 .postEditor input:focus {
   border: solid 1px #EEA34A;
 }
-/* line 44, ../scss/style.scss */
+/* line 83, ../scss/style.scss */
 .postEditor textarea {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 49, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
 .postEditor textarea:focus {
   border: solid 1px #EEA34A;
 }

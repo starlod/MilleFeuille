@@ -22,20 +22,21 @@ class PostType extends AbstractType
             // ->add('type')
             // ->add('status')
             ->add('title', TextType::class)
-            ->add('content', CKEditorType::class, array(
-                'config' => array(
-                    'uiColor' => '#ffffff',
-                    //...
-                ),
-            ))
-            ->add('metaTitle', TextType::class)
-            ->add('metaDescription', TextareaType::class)
-            ->add('publishedAt', DateTimeType::class, array(
-                'date_widget' => 'single_text',
-                'time_widget' => 'single_text',
-                'with_seconds' => true,
-                'format' => 'yyyy/MM/dd',
-            ))
+            ->add('content', TextareaType::class)
+            // ->add('content', CKEditorType::class, array(
+            //     'config' => array(
+            //         'uiColor' => '#ffffff',
+            //         //...
+            //     ),
+            // ))
+            // ->add('metaTitle', TextType::class)
+            // ->add('metaDescription', TextareaType::class)
+            // ->add('publishedAt', DateTimeType::class, array(
+            //     'date_widget' => 'single_text',
+            //     'time_widget' => 'single_text',
+            //     'format' => 'yyyy年MM月dd日',
+            //     'empty_value' => new \DateTime(),
+            // ))
         ;
     }
 

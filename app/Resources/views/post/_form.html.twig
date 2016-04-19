@@ -1,0 +1,33 @@
+<div class="postEditor">
+    <form method="POST" {{ form_enctype(form) }}>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.title) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.content) }}
+            </div>
+        </div>
+{#         <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.metaTitle) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.metaDescription) }}
+            </div>
+        </div> #}
+        <div class="row">
+{#             <div class="col-sm-2">
+                {{ form_widget(form.publishedAt, {'attr': {'class': 'date-picker'} }) }}
+            </div> #}
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-primary" value="{{ 'button.new'|trans }}" />
+            </div>
+        </div>
+        {{ form_rest(form) }}
+    </form>
+</div>

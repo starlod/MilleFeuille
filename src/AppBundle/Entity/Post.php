@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Post
  *
- * @ORM\Table(name="posts",indexes={@ORM\Index(name="find_idx", columns={"title(64)"})})
+ * @ORM\Table(name="posts")})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
 class Post extends AppEntity
@@ -33,14 +33,14 @@ class Post extends AppEntity
      *
      * @ORM\Column(name="type", type="integer")
      */
-    private $type;
+    private $type = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    private $status = 0;
 
     /**
      * @var string
@@ -59,7 +59,7 @@ class Post extends AppEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_title", type="text")
+     * @ORM\Column(name="meta_title", type="text", type="text", nullable=true)
      */
     private $metaTitle;
 
