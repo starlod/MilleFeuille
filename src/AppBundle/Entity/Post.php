@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Post
  *
- * @ORM\Table(name="posts")
+ * @ORM\Table(name="posts",indexes={@ORM\Index(name="find_idx", columns={"title(64)"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
 class Post extends AppEntity
