@@ -3,22 +3,22 @@
 {% block title %}{{ post.metaTitle }}{% endblock %}
 {% block description %}{{ post.metaDescription }}{% endblock %}
 
+{% block content %}
+    <article class="markdown-body">
+        <h1>{{ post.title }}</h1>
+
+        <ul class="list-inline">
+            <li><i class="fa fa-clock-o"></i> {% if post.publishedAt %}<time pubdate="{{ post.publishedAt|date('Y-m-d H:i:s') }}">{{ post.publishedAt|date('Y.m.d') }}</time>{% endif %}</li>
+            <li><i class="fa fa-pencil"></i> {% if post.updatedAt %}<time pubdate="{{ post.updatedAt|date('Y-m-d H:i:s') }}">{{ post.updatedAt|date('Y.m.d') }}</time>{% endif %}</li>
+            <li>{% if true %}<a href="{{ path('post_edit', { 'id': post.id }) }}"><i class="fa fa-pencil"></i> 編集</a>{% endif %}</li>
+        </ul>
+
+        {# <div>{{ post.content }}</div> #}
+        <div>{{ post.content|markdown('default') }}</div>
+    </article>
+{% endblock %}
+
 {% block article %}
-    <h1>{{ post.title }}</h1>
-
-    <ul class="list-inline">
-        <li><i class="fa fa-clock-o"></i> {% if post.publishedAt %}<time pubdate="{{ post.publishedAt|date('Y-m-d H:i:s') }}">{{ post.publishedAt|date('Y.m.d') }}</time>{% endif %}</li>
-        <li><i class="fa fa-pencil"></i> {% if post.updatedAt %}<time pubdate="{{ post.updatedAt|date('Y-m-d H:i:s') }}">{{ post.updatedAt|date('Y.m.d') }}</time>{% endif %}</li>
-        <li>{% if true %}<a href="{{ path('post_edit', { 'id': post.id }) }}"><i class="fa fa-pencil"></i> 編集{% endif %}</li>
-    </ul>
-
-    {# <div>{{ post.content }}</div> #}
-    <div>{{ post.content|markdown('default') }}</div>
-
-    {{ form_start(delete_form) }}
-        {# <input type="submit" value="btn btn-danger"> #}
-        <button type="button" class="btn btn-danger">削除</button>
-    {{ form_end(delete_form) }}
 {% endblock %}
 
 {% block referenceLink %}

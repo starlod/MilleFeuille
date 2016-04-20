@@ -40,46 +40,30 @@
 {% endblock %}
 
 {% block body %}
-    <header class="header container container-full m-b">
+    <header class="header container-fluid container-full">
         {% include '::_header.html.twig' %}
     </header>
-    <main class="{% block mainClass %}main container container-lg{% endblock %}">
+    <main class="{% block mainClass %}main container{% endblock %}">
         <div class="row">
             {% block main %}
                 <div class="content col-sm-9">
                     <aside>
                         {% include '::_alert.html.twig' %}
                     </aside>
-                    <article class="markdown-body">
-                        {% block fos_user_content %}{% endblock %}
-                        {% block article %}{% endblock %}
-                    </article>
-                    {% block referenceLink %}{# 参考リンク #}{% endblock %}
-                    {% block relatedLink %}{# 関連記事リンク #}{% endblock %}
-                    {% block aroundLink %}{# 前後記事リンク #}{% endblock %}
-                    {% block commentsList %}{# コメント一覧 #}{% endblock %}
-                    {% block commentsPost %}{# コメント投稿 #}{% endblock %}
+                    {% block content %}{% endblock %}
                 </div>
+                {% block sidebar %}
                 <div class="sidebar col-sm-3">
-                    <aside class="sidebar_widget">
-                        {# サイト内検索 #}
-                        <h3 class="sidebar_headline">サイト内検索</h3>
-                        <form>
-                            <div>
-                                <label class="screen-reader-text" for="s">検索:</label>
-                                <input type="text" value="" name="s" id="s">
-                                <input type="submit" id="searchsubmit" value="検索">
-                            </div>
-                        </form>
-                    </aside>
+                    {% include 'sidebar/_find_box.html.twig' %}
                     <aside>
                         {# 最近の投稿 #}
                     </aside>
                 </div>
+                {% endblock %}
             {% endblock %}
         </div>
     </main>
-    <footer>
+    <footer class="footer container-fluid container-full">
         {% include '::_footer.html.twig' %}
     </footer>
 {% endblock %}

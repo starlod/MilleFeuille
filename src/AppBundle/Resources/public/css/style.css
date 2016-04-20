@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 3, ../scss/style.scss */
 .no-js {
   display: none;
@@ -13,16 +14,29 @@ body {
 /* line 13, ../scss/style.scss */
 main {
   flex: 1;
+  margin: 20px 0;
+  padding: 20px 0;
 }
 
-/* line 18, ../scss/style.scss */
+/* line 20, ../scss/style.scss */
+.content {
+  padding: 0;
+}
+
+/* line 25, ../scss/style.scss */
+.sidebar {
+  padding: 0;
+}
+
+/* line 31, ../scss/style.scss */
 .headerTop {
+  margin: 0;
   width: 100%;
   height: 300px;
   background-color: #ccc;
 }
 
-/* line 25, ../scss/style.scss */
+/* line 39, ../scss/style.scss */
 .footerTop {
   margin: 0;
   width: 100%;
@@ -30,7 +44,7 @@ main {
   background-color: #333;
 }
 
-/* line 32, ../scss/style.scss */
+/* line 46, ../scss/style.scss */
 .footerBottom {
   position: relative;
   margin: 0;
@@ -41,7 +55,7 @@ main {
   background-color: #2a2a2a;
 }
 
-/* line 42, ../scss/style.scss */
+/* line 56, ../scss/style.scss */
 #copyright {
   position: absolute;
   top: 0;
@@ -56,8 +70,8 @@ main {
   line-height: 40px;
 }
 
-/* line 57, ../scss/style.scss */
-.container.container-full {
+/* line 71, ../scss/style.scss */
+.container-full {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
@@ -65,8 +79,8 @@ main {
   margin-right: 0;
 }
 
-/* line 65, ../scss/style.scss */
-.container.container-lg {
+/* line 79, ../scss/style.scss */
+.container-lg {
   max-width: 80%;
   padding-left: 0;
   padding-right: 0;
@@ -74,23 +88,173 @@ main {
   margin-right: 10px;
 }
 
-/* line 75, ../scss/style.scss */
+/* line 89, ../scss/style.scss */
 .postEditor input {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 80, ../scss/style.scss */
+/* line 94, ../scss/style.scss */
 .postEditor input:focus {
   border: solid 1px #EEA34A;
 }
-/* line 83, ../scss/style.scss */
+/* line 97, ../scss/style.scss */
 .postEditor textarea {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 88, ../scss/style.scss */
+/* line 102, ../scss/style.scss */
 .postEditor textarea:focus {
   border: solid 1px #EEA34A;
+}
+
+/* line 108, ../scss/style.scss */
+.markdown-body p {
+  padding: 0 4em 2em 4em;
+}
+
+/* line 112, ../scss/style.scss */
+.markdown-body h1 {
+  margin: 1em 1.5em;
+  padding: 0.8em;
+  border-top: 3px double #B92A2C;
+  border-bottom: 3px double #B92A2C;
+  font-size: 1.143em;
+  font-weight: bold;
+}
+
+/* line 121, ../scss/style.scss */
+.markdown-body h2 {
+  position: relative;
+  color: #111;
+  font-size: 1.143em;
+  font-weight: bold;
+  margin: 1em 1.5em;
+  padding: 0.5em 0.5em 0.5em 1.7em;
+  border-bottom: 3px solid #B92A2C;
+}
+
+/* line 131, ../scss/style.scss */
+.markdown-body h2:before {
+  content: "";
+  position: absolute;
+  background: #d48789;
+  top: 0;
+  left: 0.4em;
+  height: 12px;
+  width: 12px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+}
+
+/* line 146, ../scss/style.scss */
+.markdown-body h2:after {
+  content: "";
+  position: absolute;
+  background: #d26466;
+  top: 1.0em;
+  left: 0;
+  height: 8px;
+  width: 8px;
+  transform: rotate(15deg);
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -o-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+}
+
+/* line 161, ../scss/style.scss */
+.markdown-body h3 {
+  position: relative;
+  font-size: 1.143em;
+  font-weight: bold;
+  margin: 1em 1.5em;
+  padding: 0.5em 0.5em 0.5em 2.0em;
+  border-bottom: 2px solid #B92A2C;
+}
+
+/* line 170, ../scss/style.scss */
+.markdown-body h3:before {
+  content: "□";
+  font-size: 200%;
+  position: absolute;
+  color: #ff6b6e;
+  top: -0.8em;
+  left: 0.3em;
+  height: 12px;
+  width: 12px;
+}
+
+/* line 181, ../scss/style.scss */
+.markdown-body h3:after {
+  content: "□";
+  font-size: 200%;
+  position: absolute;
+  color: #B92A2C;
+  top: -0.5em;
+  left: 0;
+  height: 12px;
+  width: 12px;
+}
+
+/* line 192, ../scss/style.scss */
+.markdown-body h4 {
+  margin: 1em 1.5em;
+}
+
+/* line 197, ../scss/style.scss */
+.markdown-body h5 {
+  margin: 1em 1.5em;
+}
+
+/* line 202, ../scss/style.scss */
+.markdown-body h6 {
+  margin: 1em 1.5em;
+}
+
+/* line 207, ../scss/style.scss */
+.markdown-body ul {
+  margin: 0 2em 1em;
+}
+
+/* line 213, ../scss/style.scss */
+.sidebar .sidebar_widget {
+  padding-bottom: 20px;
+  border: solid 1px #ccc;
+}
+/* line 217, ../scss/style.scss */
+.sidebar .sidebar_widget_title {
+  background-color: #ccc;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+/* line 223, ../scss/style.scss */
+.sidebar .sidebar_widget_content {
+  width: 100%;
+  background-color: #fff;
+}
+
+/* line 228, ../scss/style.scss */
+.text-find {
+  width: 100%;
+  position: absolute;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 2px;
+}
+
+/* line 235, ../scss/style.scss */
+.btn-find {
+  font-family: FontAwesome;
+  position: absolute;
+  right: 0;
+  border: 0;
+  background: none;
+  height: 30px;
+  line-height: 30px;
 }
