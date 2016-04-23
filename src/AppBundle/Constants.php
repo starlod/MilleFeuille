@@ -9,4 +9,7 @@ class Constants
 
     // 検索キーワード
     const SESSION_FIND_KEYWORD = 'keyword';
+
+    // 20件
+    const PAGE_RANGE = 20;
 }

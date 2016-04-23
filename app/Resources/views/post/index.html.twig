@@ -3,9 +3,10 @@
 {% block title %}記事一覧{% endblock %}
 
 {% block content %}
-    <article>
-        <h1 class="h1">{{ 'post.title.index'|trans }}</h1>
-        {% for post in posts %}
+    <h1 class="h1">{{ 'post.title.index'|trans }}</h1>
+    {{ knp_pagination_render(posts) }}
+    {% for post in posts %}
+        <article>
             <div class="post-item row">
                 <div class="post-image col-xs-12 col-md-12 col-lg-4">
                     <a href="{{ path('post_show', { 'id': post.id }) }}" class="">
@@ -20,7 +21,7 @@
                         <time>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</time>
                     </div>
                     <div class="card-text">
-                        <a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.content|markdown|striptags|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}</a>
+                        {{ post.content|markdown|striptags|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}
                         <ul class="list-inline">
                             <li class="pull-right"><a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary btn-sm">{{ 'button.readme'|trans }}</a></li>
                         </ul>
@@ -28,6 +29,8 @@
                 </div>
                 {% if loop.last == false %}<hr>{% endif %}
             </div>
-        {% endfor %}
-    </article>
+        </article>
+    {% endfor %}
+
+    {{ knp_pagination_render(posts) }}
 {% endblock %}

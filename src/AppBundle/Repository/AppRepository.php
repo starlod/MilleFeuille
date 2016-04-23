@@ -4,6 +4,7 @@ namespace AppBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Constants;
+use AppBundle\Util;
 
 /**
  * AppEntityRepository
@@ -98,7 +99,13 @@ abstract class AppRepository extends EntityRepository
      */
     public static function toArrayByForm($form)
     {
-        $request = $this->getContainer()->getRequest();
+        global $kernel;
+        if ($kernel instanceOf \AppCache) {
+            $kernel = $kernel->getKernel();
+        }
+        $container = $kernel->getContainer();
+
+        $request = $container->get('request');
 
         // 入力された検索条件取得
         $formDataArray = array();
@@ -108,7 +115,7 @@ abstract class AppRepository extends EntityRepository
             unset($formDataArray['submit']);
 
             // 空要素チェック＆削除
-            $formDataArray = self::mightRemoveEmptyInArray($formDataArray);
+            $formDataArray = Util::mightRemoveEmptyInArray($formDataArray);
 
             $request->getSession()->set(Constants::SESSION_FIND_KEYWORD, $formDataArray);
         } else {
@@ -124,7 +131,13 @@ abstract class AppRepository extends EntityRepository
      */
     public static function getOrderByPaginator($orderBy, $table = 't')
     {
-        $request = $this->getContainer()->get('request');
+        global $kernel;
+        if ($kernel instanceOf \AppCache) {
+            $kernel = $kernel->getKernel();
+        }
+        $container = $kernel->getContainer();
+
+        $request = $container->get('request');
 
         $sort = $request->query->get('sort', false);
         $direction = $request->query->get('direction', false);

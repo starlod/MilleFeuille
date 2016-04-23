@@ -23,11 +23,12 @@ class PostController extends AppController
      * @Route("/", name="post_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('AppBundle:Post')->findAll();
+        $posts = $this->getPaginator($posts, $request->query->get('page', 1));
         $findForm = $this->createFindForm(new Post());
 
         return $this->render('post/index.html.twig', array(
@@ -63,28 +64,35 @@ class PostController extends AppController
         //     }
         // }
 
-        $pagination = array();
+        $posts = array();
         if (!$hasError) {
+            // フォームデータ
+            $formData = $findForm->getData();
 
             // 検索
             $em = $this->getDoctrine()->getManager();
-            $entities = $em->getRepository('AppBundle:Post')->findByForm(
+            $posts = $em->getRepository('AppBundle:Post')->findByForm(
                 $findForm,
                 array(),
                 array('updatedAt' => 'DESC')
             );
-            $pagination = $this->getPaginator($entities, $request->query->get('page', 1));
+            // $posts = $em->getRepository('AppBundle:Post')->findByContent(
+            //     $formData->getContent(),
+            //     array(),
+            //     array('updatedAt' => 'DESC')
+            // );
+            $posts = $this->getPaginator($posts, $request->query->get('page', 1));
 
             // 検索結果が空の場合はメッセージを表示
-            if (empty($entities)) {
+            if (empty($posts)) {
                 $this->showWarningMessage('message.warning.findForm.notResult');
             }
         }
 
-        return array(
+        return $this->render('post/index.html.twig', array(
             'findForm' => $findForm->createView(),
-            'pagination' => $pagination,
-        );
+            'posts' => $posts,
+        ));
     }
 
     /**
@@ -97,7 +105,7 @@ class PostController extends AppController
     private function createFindForm(Post $entity)
     {
         $form = $this->createForm(PostFindType::class, $entity, array(
-            'action' => $this->generateUrl('post_find', array('id' => $entity->getId()))
+            'action' => $this->generateUrl('post_find')
         ));
 
         return $form;
@@ -137,11 +145,11 @@ class PostController extends AppController
      */
     public function showAction(Post $post)
     {
-        $deleteForm = $this->createDeleteForm($post);
+        $findForm = $this->createFindForm(new Post());
 
         return $this->render('post/show.html.twig', array(
             'post' => $post,
-            'delete_form' => $deleteForm->createView(),
+            'findForm' => $findForm->createView(),
         ));
     }
 

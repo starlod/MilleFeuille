@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Constants;
+use AppBundle\Util;
 
 class AppController extends Controller
 {
@@ -120,5 +122,16 @@ class AppController extends Controller
             return false;
         }
         return true;
+    }
+
+    /**
+     * ページャー
+     * @param Query $query
+     * @param Int $page
+     * @param Int $pageRange
+     */
+    protected function getPaginator($query, $page = 1, $pageRange = Constants::PAGE_RANGE)
+    {
+        return $this->get('knp_paginator')->paginate($query, $page, $pageRange);
     }
 }
