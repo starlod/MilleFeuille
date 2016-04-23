@@ -1,0 +1,124 @@
+Symfonyコマンドリスト
+
+# Symfony
+
+## 環境チェック
+
+```
+# Symfony環境チェック
+$ php app/check.php
+# Symfonyバージョン確認
+$ php app/console --version
+# Symfonyコンソールコマンドリスト
+$ php app/console list
+# Symfonyサービスコンテナリスト
+$ php app/console debug:container
+# ルーティングリスト
+$ php app/console debug:router
+```
+
+## デバッグ
+
+```
+* Dumps the current configuration for an extension
+$ php app_consle debug:config
+* Displays current services for an application
+$ php app_consle debug:container
+* Displays configured listeners for an application
+$ php app_consle debug:event-dispatcher
+* Displays current routes for an application
+$ php app_consle debug:router
+* Displays current mailers for an application
+$ php app_consle debug:swiftmailer
+* Displays translation messages information
+$ php app_consle debug:translation
+* Shows a list of twig functions, filters, globals and tests
+$ php app_consle debug:twig
+```
+
+## バンドル
+
+```
+# バンドル作成
+$ php app/console generate:bundle --namespace=AppBundle --format=annotation
+```
+
+## エンティティ
+
+```
+# データベース削除
+$ php app/console doctrine:database:drop --force
+# データベース作成
+$ php app/console doctrine:database:create
+# スキーマ（テーブル）削除
+$ doctrine:schema:drop --force
+# スキーマ（テーブル）作成
+$ doctrine:schema:create
+# テストデータ投入
+$ php app/console doctrine:fixtures:load
+# エンティティ作成
+$ php app/console generate:doctrine:entity --entity=AppBundle:Post
+# ゲッターセッター生成
+$ php app/console doctrine:generate:entities AppBundle
+# エンティティからテーブルスキーマの作成
+$ php app/console doctrine:schema:update --force
+# エンティティからCRUD生成
+$ php app/console doctrine:generate:crud --entity=AppBundle:Post --with-write
+* DQLをコマンドラインで直接実行
+$ php app/console doctrine:query:dql "SELECT p FROM AppBundle:Post p"
+$ php app/console doctrine:query:dql "SELECT p FROM AppBundle:Post p"
+* SQLをコマンドラインで直接実行
+$ php app/console doctrine:query:sql "SELECT * FROM posts"
+```
+
+## ジェネレータ
+
+* バンドル作成(src/AppBundle)
+$ php app/console generate:bundle --namespace=AppBundle
+* コンソールコマンド作成(src/AppBundle/Command/BlogPublishPostsCommand.php)
+$ php app/console generate:command AppBundle blog:publish-posts
+* 作成したコンソールコマンド`blog:publish-posts`を実行する
+$ php app/console blog:publish-posts
+Command result.
+* コントローラ作成(src/AppBundle/Controller/PostController.php)
+$ php app/console generate:controller --controller=AppBundle:Post
+* Generates a CRUD based on a Doctrine entity
+$ php app/console generate:doctrine:crud --entity=AppBundle:Post --with-write
+* Generates entity classes and method stubs from your mapping information
+$ php app/console generate:doctrine:entities
+* Generates a new Doctrine entity inside a bundle
+$ php app/console generate:doctrine:entity
+* Generates a form type class based on a Doctrine entity
+$ php app/console generate:doctrine:form
+
+## キャッシュ, Assets
+
+```
+# キャッシュクリア(dev)
+php app/console assets:install --symlink
+php app/console cache:clear --no-warmup
+# キャッシュクリア(prod)
+php app/console assets:install --symlink
+php app/console cache:clear --env=prod --no-debug
+
+```
+
+## FOSUserBundleコマンド
+
+```
+# アクティブなユーザーかチェックする
+$ php app/console fos:user:activate
+# ユーザーのパスワードを変更する
+$ php app/console fos:user:change-password
+# アクティブなユーザーを作成する
+$ php app/console fos:user:create
+# Deactivate a user
+$ php app/console fos:user:deactivate
+# Demote a user by removing a role
+$ php app/console fos:user:demote
+# Promotes a user by adding a role
+$ php app/console fos:user:promote
+```
+
+## サーバー
+
