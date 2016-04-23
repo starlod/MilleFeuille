@@ -2,8 +2,8 @@
 <aside class="sidebar_widget sidebar_find_widget">
     <h3 class="sidebar_widget_title">サイト内検索</h3>
     <div class="sidebar_widget_content">
-        <form>
-            <input type="text" value="" name="s" id="s" class="text-find">
+        <form action="{{ path('post_find') }}" method="POST" {{ form_enctype(findForm) }}>
+            {{ form_widget(findForm.keyword, {'attr': {'class': 'text-find'}}) }}
             <input type="submit" id="btn-find" class="btn-find" value="&#xf002;">
         </form>
     </div>

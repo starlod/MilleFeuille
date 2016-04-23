@@ -98,7 +98,7 @@ abstract class AppRepository extends EntityRepository
      */
     public static function toArrayByForm($form)
     {
-        $request = $this->getContainer()->get('request');
+        $request = $this->getContainer()->getRequest();
 
         // 入力された検索条件取得
         $formDataArray = array();
