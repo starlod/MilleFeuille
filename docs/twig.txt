@@ -1,0 +1,246 @@
+
+## インクルード
+
+{% include "::base.html.twig" %}
+{% include "AppBundle:Post:base.html.twig" %}
+
+## リンク
+
+```
+<a href="{{ path('homepage') }}">Home<a/> // 絶対パス
+<a href="{{ url('homepage') }}">Home<a/> // 相対パス
+<a href="{{ path('post_show', {'id': post.id}) }}">Article1</a>
+```
+
+## block
+
+```
+<title>{% block title %}{% endblock %}</title>
+<h1>{{ block('title') }}</h1>
+{% block body %}{% endblock %}
+```
+
+## extends
+
+指定したテンプレートを継承できる。Twigファイルの1行目に記述する。
+多重継承はサポートされていません。`Bundle:Controller:TwigFileName`と指定できる。
+
+```
+{# app/Resources/views/base.html.twig #}
+{% extends "::base.html.twig" %}
+
+{# src/AppBundle/Resources/views/layout.html.twig #}
+{% extends "AppBundle::layout.html.twig" %}
+
+{# src/AppBundle/Resources/views/Post/layout.html.twig #}
+{% extends "AppBundle:Post:index.html.twig" %}
+```
+
+ベストプラクティスは`app/Resources/views`にすべてのテンプレートを配置する。
+
+## set
+
+Twigは次のように文字列, 配列, 連想配列, 複数の変数定義できます。
+
+```
+{% set foo = 'foo' %}
+{% set foo = [1, 2] %}
+{% set foo = {'foo': 'bar'} %}
+{% set foo, bar = 'foo', 'bar' %}
+```
+
+## if
+
+## for
+
+### 配列のループ
+
+一般的なTwigのループの書き方です。
+
+```
+{% for post in posts %}
+    {{ post.title|e }}
+{% endfor %}
+```
+
+### 配列のループ（添字付き）
+
+```
+{% for key, value in posts %}
+    {{ key }}：{{ value.title|e }}
+{% endfor %}
+```
+
+### 指定回数ループ
+
+```
+{% for i in range(0, 10) %}
+    {{ i }},
+{% endfor %}
+
+{% for i in 0..10 %}
+    {{ i }},
+{% endfor %}
+```
+
+### 指定回数ループ(増分指定)
+
+```
+{% for i in range(low=1, high=10, step=2) %}
+    {{ i }},
+{% endfor %}
+```
+
+### 逆順ループ
+
+```
+{% for post in posts|reverse %}
+    {{ post.title|e }}
+{% endfor %}
+
+{% for key, value in {1: "a", 2: "b", 3: "c"}|reverse %}
+    {{ key }}: {{ value }}
+{%- endfor %}
+{# output: 0: c    1: b    2: a #}
+
+{% for key, value in {1: "a", 2: "b", 3: "c"}|reverse(true) %}
+    {{ key }}: {{ value }}
+{%- endfor %}
+{# output: 3: c    2: b    1: a #}
+```
+
+添字の値も逆順に取得したい場合は`reverse(true)`と指定する。
+
+### ループ内で使用できる変数
+
+| loop.index     | ループした回数（1から始まる）                |
+| loop.index0    | ループした回数（0から始まる）                |
+| loop.revindex  | ループした回数（最後からカウント、１から始まる）   |
+| loop.revindex0 | ループした回数（最後からカウント、0から始まる）   |
+| loop.first     | 最初の要素のときtrueを返す                 |
+| loop.last      | 最後の要素のときtrueを返す                 |
+| loop.length    | 配列の長さを返す                          |
+| loop.parent    | ネストしてるループのとき、上階層のループ要素を取得 |
+
+{% if loop.index is divisibleby(3) %}
+    ...
+{% endif %}
+
+## 文字系
+
+### 文字連結
+
+Twigは文字の連結に`~`(チルダ)を使います。
+
+```
+{{ 'Hello' ~ 'World' }}
+HelloWorld
+```
+
+### 大文字、小文字変換
+
+```
+{{ 'Hello'|upper }}
+HELLO
+
+{{ 'Hello'|lower }}
+hello
+
+{{ 'my first car'|title }}
+My First Car
+```
+
+## 配列の操作
+
+### first
+### last
+### slice
+### sort
+### max
+### min
+### random
+
+## 日付
+
+Twigで日付型のデータを表示する場合、`date`フィルターを通して表示します。
+
+```
+post.publishedAt|date('d-M-y')
+post.publishedAt|date('Y年m月d日')
+post.publishedAt|date('Y/m/d H:i')
+```
+
+## デバッグ
+
+```
+{{ dump(posts) }}
+```
+
+## 権限
+
+```
+{% if is_granted('ROLE_ADMIN') %}
+    {# 管理者権限の処理 #}
+{% endif %}
+```
+
+## グローバルテンプレート変数
+
+app.security - セキュリティコンテキスト
+app.user - 現在のユーザーオブジェクト
+app.request - リクエストオブジェクト
+app.request.get('foo') //get
+app.request.request.get('foo') //post
+app.session - セッションオブジェクト
+app.environment - 現在の環境 (dev、prod など)
+app.debug - デバッグモードであれば true、それ以外なら false
+_self
+_context
+_charset
+
+### よく使うグローバルテンプレート変数
+
+#### ルートディレクトリ
+
+```
+{{ app.request.basePath }}
+/blog
+```
+
+#### ルートパス
+
+{{ app.request.baseUrl }}
+/blog/app_dev.php
+
+#### URI
+
+{{ app.request.requestUri }}
+/blog/app_dev.php/post?range=20
+
+#### パス
+
+{{ app.request.pathInfo }}
+/post/
+
+#### パス名
+
+```
+{{ app.request.get('_route') }}
+post_index
+```
+
+#### コントローラ名
+
+```
+{{ app.request.get('_controller') }}
+AppBundle\Controller\PostController::indexAction
+```
+
+## 定数の取得
+
+TwigからControllerやEntityで定義しているconstの値にアクセスできます。
+
+```
+{{ constant('AppBundle\\Controller\\PostController::DEFAULT_LIMIT') }}
+```
+
