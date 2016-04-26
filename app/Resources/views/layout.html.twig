@@ -43,13 +43,11 @@
     <header class="header container-fluid container-full">
         {% include '::_header.html.twig' %}
     </header>
-    <main class="{% block mainClass %}main container{% endblock %}">
+
+    <main class="{% block mainClass %}main container container-lg{% endblock %}">
         <div class="row">
             {% block main %}
                 <div class="content col-sm-9">
-                    <aside>
-                        {% include '::_alert.html.twig' %}
-                    </aside>
                     {% block content %}{% endblock %}
                 </div>
                 {% block sidebar %}

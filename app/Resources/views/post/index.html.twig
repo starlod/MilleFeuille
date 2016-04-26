@@ -21,7 +21,9 @@
                         <time>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</time>
                     </div>
                     <div class="card-text">
-                        {{ post.content|markdown|striptags|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}
+                        {% set content = post.content|markdown('default') %}
+                        {% set content = content|striptags %}
+                        {{ content|slice(0, 110) }}{% if content|length > 110 %}...{% endif %}
                         <ul class="list-inline">
                             <li class="pull-right"><a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary btn-sm">{{ 'button.readme'|trans }}</a></li>
                         </ul>

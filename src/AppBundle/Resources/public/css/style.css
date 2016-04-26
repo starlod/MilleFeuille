@@ -88,33 +88,37 @@ main {
   margin-right: 10px;
 }
 
-/* line 89, ../scss/style.scss */
+/* line 88, ../scss/style.scss */
+.postEditor {
+  width: 100%;
+}
+/* line 90, ../scss/style.scss */
 .postEditor input {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 94, ../scss/style.scss */
+/* line 95, ../scss/style.scss */
 .postEditor input:focus {
   border: solid 1px #EEA34A;
 }
-/* line 97, ../scss/style.scss */
+/* line 98, ../scss/style.scss */
 .postEditor textarea {
   border: 1px solid #b6b6b6;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   width: 100%;
 }
-/* line 102, ../scss/style.scss */
+/* line 103, ../scss/style.scss */
 .postEditor textarea:focus {
   border: solid 1px #EEA34A;
 }
 
-/* line 108, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 .markdown-body p {
   padding: 0 4em 2em 4em;
 }
 
-/* line 112, ../scss/style.scss */
+/* line 113, ../scss/style.scss */
 .markdown-body h1 {
   margin: 1em 1.5em;
   padding: 0.8em;
@@ -124,7 +128,7 @@ main {
   font-weight: bold;
 }
 
-/* line 121, ../scss/style.scss */
+/* line 122, ../scss/style.scss */
 .markdown-body h2 {
   position: relative;
   color: #111;
@@ -135,7 +139,7 @@ main {
   border-bottom: 3px solid #B92A2C;
 }
 
-/* line 131, ../scss/style.scss */
+/* line 132, ../scss/style.scss */
 .markdown-body h2:before {
   content: "";
   position: absolute;
@@ -151,7 +155,7 @@ main {
   -ms-transform: rotate(45deg);
 }
 
-/* line 146, ../scss/style.scss */
+/* line 147, ../scss/style.scss */
 .markdown-body h2:after {
   content: "";
   position: absolute;
@@ -167,7 +171,7 @@ main {
   -ms-transform: rotate(15deg);
 }
 
-/* line 161, ../scss/style.scss */
+/* line 162, ../scss/style.scss */
 .markdown-body h3 {
   position: relative;
   font-size: 1.143em;
@@ -177,7 +181,7 @@ main {
   border-bottom: 2px solid #B92A2C;
 }
 
-/* line 170, ../scss/style.scss */
+/* line 171, ../scss/style.scss */
 .markdown-body h3:before {
   content: "□";
   font-size: 200%;
@@ -189,7 +193,7 @@ main {
   width: 12px;
 }
 
-/* line 181, ../scss/style.scss */
+/* line 182, ../scss/style.scss */
 .markdown-body h3:after {
   content: "□";
   font-size: 200%;
@@ -201,45 +205,45 @@ main {
   width: 12px;
 }
 
-/* line 192, ../scss/style.scss */
+/* line 193, ../scss/style.scss */
 .markdown-body h4 {
   margin: 1em 1.5em;
 }
 
-/* line 197, ../scss/style.scss */
+/* line 198, ../scss/style.scss */
 .markdown-body h5 {
   margin: 1em 1.5em;
 }
 
-/* line 202, ../scss/style.scss */
+/* line 203, ../scss/style.scss */
 .markdown-body h6 {
   margin: 1em 1.5em;
 }
 
-/* line 207, ../scss/style.scss */
+/* line 208, ../scss/style.scss */
 .markdown-body ul {
   margin: 0 2em 1em;
 }
 
-/* line 213, ../scss/style.scss */
+/* line 214, ../scss/style.scss */
 .sidebar .sidebar_widget {
   padding-bottom: 20px;
   border: solid 1px #ccc;
 }
-/* line 217, ../scss/style.scss */
+/* line 218, ../scss/style.scss */
 .sidebar .sidebar_widget_title {
   background-color: #ccc;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
   margin-bottom: 20px;
 }
-/* line 223, ../scss/style.scss */
+/* line 224, ../scss/style.scss */
 .sidebar .sidebar_widget_content {
   width: 100%;
   background-color: #fff;
 }
 
-/* line 228, ../scss/style.scss */
+/* line 229, ../scss/style.scss */
 .text-find {
   width: 100%;
   position: absolute;
@@ -248,7 +252,7 @@ main {
   border-radius: 2px;
 }
 
-/* line 235, ../scss/style.scss */
+/* line 236, ../scss/style.scss */
 .btn-find {
   font-family: FontAwesome;
   position: absolute;

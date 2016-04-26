@@ -2,8 +2,13 @@
 
 {% block title %}{{ 'post.title.new'|trans }}{% endblock %}
 
-{% block article %}
+{% block content %}
     <h1>{{ 'post.title.new'|trans }}</h1>
 
     {% include '::post/_form.html.twig' %}
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar col-sm-3">
+</div>
 {% endblock %}

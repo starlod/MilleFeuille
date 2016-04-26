@@ -66,9 +66,6 @@ class PostController extends AppController
 
         $posts = array();
         if (!$hasError) {
-            // フォームデータ
-            $formData = $findForm->getData();
-
             // 検索
             $em = $this->getDoctrine()->getManager();
             $posts = $em->getRepository('AppBundle:Post')->findByForm(
