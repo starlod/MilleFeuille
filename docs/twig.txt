@@ -1,14 +1,27 @@
 
 ## インクルード
 
-{% include "::base.html.twig" %}
-{% include "AppBundle:Post:base.html.twig" %}
+```
+{% include 'template.html.twig' %}
+{% include 'template.html.twig' with {'foo': 'bar'} %}
+```
+
+### template_from_string
+
+文字列をテンプレートとしてインクルード
+
+```
+{% set user_template = "{{ description[0:80] }}"
+<br /> Price: {{product.price}} %}
+
+{% include template_from_string(user_template) %}
+```
 
 ## リンク
 
 ```
-<a href="{{ path('homepage') }}">Home<a/> // 絶対パス
-<a href="{{ url('homepage') }}">Home<a/> // 相対パス
+<a href="{{ path('home') }}">Home<a/> // 絶対パス
+<a href="{{ url('home') }}">Home<a/> // 相対パス
 <a href="{{ path('post_show', {'id': post.id}) }}">Article1</a>
 ```
 
@@ -152,13 +165,73 @@ My First Car
 
 ## 配列の操作
 
-### first
-### last
+### 配列の先頭、末尾の取得
+
+```
+{% set firstElement = array|first %}
+{% set lastElement = array|last %}
+```
+
+#### 配列、連想配列、文字列でもOK
+
+'''
+{{ [1, 2, 3, 4]|first }}
+{{ {a: 1, b: 2, c: 3, d: 4}|first }}
+{{ '1234'|first }}
+'''
+
+すべて'1'が表示される。
+
 ### slice
+
+'''
+{% for i in [1, 2, 3, 4, 5]|slice(1, 2) %}
+    {# 2, 3 #}
+{% endfor %}
+
+{{ '12345'|slice(1, 2) }}
+{# 23 #}
+'''
+
 ### sort
+
+'''
+{% for i in array|sort %}
+    {{ i }},
+{% endfor %}
+'''
+
+PHPの[asort](http://php.net/asort)と同じく連想キーと要素との関係を維持しつつ配列をソートします。
+
 ### max
+
+'''
+{{ max(1, 3, 2) }}
+{{ max([1, 3, 2]) }}
+'''
+
 ### min
+
+'''
+{{ min(1, 3, 2) }}
+{{ min([1, 3, 2]) }}
+'''
+
 ### random
+
+'''
+{{ random(['apple', 'orange', 'citrus']) }}
+orange
+
+{{ random('ABC') }}
+B
+
+{{ random() }}
+15386094
+
+{{ random(5) }}
+3
+'''
 
 ## 日付
 
@@ -169,6 +242,36 @@ post.publishedAt|date('d-M-y')
 post.publishedAt|date('Y年m月d日')
 post.publishedAt|date('Y/m/d H:i')
 ```
+
+### 現在日時を表示
+
+'''
+{{ 'now'|date('Y-m-d') }}
+'''
+
+## 文字コード変換
+
+'''
+{{ text|convert_encoding('UTF-8', 'ISO-8859-1') }}
+{{ text|convert_encoding(to='UTF-8', from='ISO-8859-1') }}
+{{ text|convert_encoding(from='ISO-8859-1', to='UTF-8') }}
+'''
+
+パラメータを指定しない場合は'convert_encoding(to, from)'の順番になる。
+
+## default
+
+'''
+{{ variable|default('') }}
+'''
+
+## source
+
+'''
+{% source '../../../composer.json' %}
+'''
+
+PHPの[file_get_contents](http://php.net/manual/ja/function.file-get-contents.php)と同じ
 
 ## デバッグ
 
@@ -186,19 +289,49 @@ post.publishedAt|date('Y/m/d H:i')
 
 ## グローバルテンプレート変数
 
-app.security - セキュリティコンテキスト
-app.user - 現在のユーザーオブジェクト
-app.request - リクエストオブジェクト
-app.request.get('foo') //get
-app.request.request.get('foo') //post
-app.session - セッションオブジェクト
-app.environment - 現在の環境 (dev、prod など)
-app.debug - デバッグモードであれば true、それ以外なら false
-_self
-_context
-_charset
+'''
+{# セキュリティコンテキスト #}
+{{ dump(app.security) }}
+
+{# ログインユーザーオブジェクト #}
+{{ dump(app.user) }}
+
+{# リクエストオブジェクト #}
+{{ dump(app.request) }}
+
+{# GETパラメータ取得 #}
+{{ app.request.get('foo') }}
+
+{# POSTパラメータ取得 #}
+{{ app.request.request.get('foo') }}
+
+{# セッションオブジェクト #}
+{{ dump(app.session) }}
+
+{# 環境 #}
+{{ app.environment }}
+
+{# デバッグモードであれば true、それ以外なら false #}
+{{ app.debug }}
+
+{# テンプレート情報 #}
+{{ dump(_self) }}
+
+{# コンテキスト #}
+{{ dump(_context) }}
+
+{# 文字コード #}
+{{ _charset }}
+'''
 
 ### よく使うグローバルテンプレート変数
+
+#### METHOD
+
+'''
+{{ app.request.method }}
+GET
+'''
 
 #### ルートディレクトリ
 
@@ -209,18 +342,24 @@ _charset
 
 #### ルートパス
 
+'''
 {{ app.request.baseUrl }}
 /blog/app_dev.php
+'''
 
 #### URI
 
+'''
 {{ app.request.requestUri }}
 /blog/app_dev.php/post?range=20
+'''
 
 #### パス
 
+'''
 {{ app.request.pathInfo }}
 /post/
+'''
 
 #### パス名
 
