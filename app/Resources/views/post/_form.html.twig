@@ -1,0 +1,20 @@
+<div class="postEditor">
+    {{ form_start(form, {'method': 'POST'}) }}
+        {{ form_widget(form.title) }}
+        {{ form_widget(form.content) }}
+        <input type="submit" class="btn btn-primary" value="{{ 'button.new'|trans }}" />
+    {{ form_end(form) }}
+</div>
+{#         <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.metaTitle) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{ form_widget(form.metaDescription) }}
+            </div>
+        </div> #}
+{#             <div class="col-sm-2">
+                {{ form_widget(form.publishedAt, {'attr': {'class': 'date-picker'} }) }}
+            </div> #}

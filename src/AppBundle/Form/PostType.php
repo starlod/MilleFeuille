@@ -5,6 +5,10 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class PostType extends AbstractType
 {
@@ -15,15 +19,24 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('parentId')
-            ->add('type')
-            ->add('status')
-            ->add('title')
-            ->add('content')
-            ->add('metaTitle')
-            ->add('metaDescription')
-            ->add('createdAt', 'datetime')
-            ->add('updatedAt', 'datetime')
+            // ->add('type')
+            // ->add('status')
+            ->add('title', TextType::class)
+            ->add('content', TextareaType::class)
+            // ->add('content', CKEditorType::class, array(
+            //     'config' => array(
+            //         'uiColor' => '#ffffff',
+            //         //...
+            //     ),
+            // ))
+            // ->add('metaTitle', TextType::class)
+            // ->add('metaDescription', TextareaType::class)
+            // ->add('publishedAt', DateTimeType::class, array(
+            //     'date_widget' => 'single_text',
+            //     'time_widget' => 'single_text',
+            //     'format' => 'yyyy年MM月dd日',
+            //     'empty_value' => new \DateTime(),
+            // ))
         ;
     }
 

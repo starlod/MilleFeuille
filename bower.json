@@ -18,6 +18,10 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "v4.0.0-alpha.2"
+    "bootstrap": "v4.0.0-alpha.2",
+    "github-markdown-css": "^2.2.1",
+    "datetimepicker": "^2.5.1",
+    "web-starter-kit": "^0.6.2",
+    "gmaps": "hpneo/gmaps#^0.4.24"
   }
 }

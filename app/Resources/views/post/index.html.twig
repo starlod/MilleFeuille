@@ -2,36 +2,37 @@
 
 {% block title %}記事一覧{% endblock %}
 
-{% block article %}
+{% block content %}
     <h1 class="h1">{{ 'post.title.index'|trans }}</h1>
+    {{ knp_pagination_render(posts) }}
     {% for post in posts %}
-        <div class="post-item row">
-            <div class="post-image col-xs-12 col-md-12 col-lg-4">
-                <a href="{{ path('post_show', { 'id': post.id }) }}" class="">
-                    <img class="img-thumbnail center-block" src="http://placehold.jp/cc9999/993333/200x150.png?text={{ '＃' ~ post.id }}" alt="Card image cap">
-                </a>
-            </div>
-            <div class="post-overview col-xs-12 col-md-12 col-lg-8">
-                <h2 class="card-title"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title }}</a></h2>
-                <div class="card-date{% if post.publishedAt > date('-1 day') %} new{% endif %}">
-                    {% if post.publishedAt > date('-1 day') %}<i class="fa fa-flag"></i>{% endif %}
-                    {# <time>{{ post.publishedAt|fuzzy }}</time> #}
-                    <time>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</time>
+        <article>
+            <div class="post-item row">
+                <div class="post-image col-xs-12 col-md-12 col-lg-4">
+                    <a href="{{ path('post_show', { 'id': post.id }) }}" class="">
+                        <img class="img-thumbnail center-block" src="http://placehold.jp/cc9999/993333/200x150.png?text={{ '＃' ~ post.id }}" alt="Card image cap">
+                    </a>
                 </div>
-                <div class="card-text"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.content|slice(0, 110) }}{% if post.content|length > 110 %}...{% endif %}</a></div>
-                    <ul class="list-inline">
-                        <li class="pull-right"><a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary btn-sm">{{ 'button.readme'|trans }}</a></li>
-                    </ul>
+                <div class="post-overview col-xs-12 col-md-12 col-lg-8">
+                    <h2 class="card-title"><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.title|striptags }}</a></h2>
+                    <div class="card-date{% if post.publishedAt > date('-1 day') %} new{% endif %}">
+                        {% if post.publishedAt > date('-1 day') %}<i class="fa fa-flag"></i>{% endif %}
+                        {# <time>{{ post.publishedAt|fuzzy }}</time> #}
+                        <time>{{ post.publishedAt ? post.publishedAt|date('Y-m-d H:i:s') : '' }}</time>
+                    </div>
+                    <div class="card-text">
+                        {% set content = post.content|markdown('default') %}
+                        {% set content = content|striptags %}
+                        {{ content|slice(0, 110) }}{% if content|length > 110 %}...{% endif %}
+                        <ul class="list-inline">
+                            <li class="pull-right"><a href="{{ path('post_show', { 'id': post.id }) }}" class="btn btn-primary btn-sm">{{ 'button.readme'|trans }}</a></li>
+                        </ul>
+                    </div>
                 </div>
+                {% if loop.last == false %}<hr>{% endif %}
             </div>
-            {% if loop.last == false %}<hr>{% endif %}
-        </div>
+        </article>
     {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_new') }}">新しい記事を書く</a>
-        </li>
-    </ul>
-
+    {{ knp_pagination_render(posts) }}
 {% endblock %}

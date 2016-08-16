@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Post;
 use AppBundle\Form\PostType;
+use AppBundle\Form\PostFindType;
 
 /**
  * Post controller.
@@ -22,15 +23,89 @@ class PostController extends AppController
      * @Route("/", name="post_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $posts = $em->getRepository('AppBundle:Post')->findAll();
+        $posts = $this->getPaginator($posts, $request->query->get('page', 1));
+        $findForm = $this->createFindForm(new Post());
 
         return $this->render('post/index.html.twig', array(
+            'findForm' => $findForm->createView(),
             'posts' => $posts,
         ));
+    }
+
+    /**
+     * Find Post entities.
+     *
+     * @Route("/find", name="post_find")
+     * @Method({"GET", "POST"})
+     */
+    public function findAction(Request $request)
+    {
+        $entity = new Post();
+        $findForm = $this->createFindForm($entity);
+
+        // 検索フォームに入力データをセット
+        if ($request->getMethod() === 'POST') {
+            $findForm->handleRequest($request);
+        } else {
+            $findForm->submit($request->getSession()->get(Constants::SESSION_SAVE_KEYWORD));
+        }
+
+        // 入力チェック
+        $hasError = false;
+        // if ($request->getMethod() === 'POST') {
+        //     if ($this->isEmptyByForm($findForm)) {
+        //         $this->showWarningMessage('message.warning.findForm.notBlank');
+        //         $hasError = true;
+        //     }
+        // }
+
+        $posts = array();
+        if (!$hasError) {
+            // 検索
+            $em = $this->getDoctrine()->getManager();
+            $posts = $em->getRepository('AppBundle:Post')->findByForm(
+                $findForm,
+                array(),
+                array('updatedAt' => 'DESC')
+            );
+            // $posts = $em->getRepository('AppBundle:Post')->findByContent(
+            //     $formData->getContent(),
+            //     array(),
+            //     array('updatedAt' => 'DESC')
+            // );
+            $posts = $this->getPaginator($posts, $request->query->get('page', 1));
+
+            // 検索結果が空の場合はメッセージを表示
+            if (empty($posts)) {
+                $this->showWarningMessage('message.warning.findForm.notResult');
+            }
+        }
+
+        return $this->render('post/index.html.twig', array(
+            'findForm' => $findForm->createView(),
+            'posts' => $posts,
+        ));
+    }
+
+    /**
+    * Creates a form to find a Post entity.
+    *
+    * @param Post $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createFindForm(Post $entity)
+    {
+        $form = $this->createForm(PostFindType::class, $entity, array(
+            'action' => $this->generateUrl('post_find')
+        ));
+
+        return $form;
     }
 
     /**
@@ -67,11 +142,11 @@ class PostController extends AppController
      */
     public function showAction(Post $post)
     {
-        $deleteForm = $this->createDeleteForm($post);
+        $findForm = $this->createFindForm(new Post());
 
         return $this->render('post/show.html.twig', array(
             'post' => $post,
-            'delete_form' => $deleteForm->createView(),
+            'findForm' => $findForm->createView(),
         ));
     }
 
@@ -97,7 +172,7 @@ class PostController extends AppController
 
         return $this->render('post/edit.html.twig', array(
             'post' => $post,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

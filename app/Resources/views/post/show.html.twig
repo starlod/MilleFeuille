@@ -1,64 +1,55 @@
 {% extends '::layout.html.twig' %}
 
-{% block article %}
-    <h1>Post</h1>
+{% block title %}{{ post.metaTitle }}{% endblock %}
+{% block description %}{{ post.metaDescription }}{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Parentid</th>
-                <td>{{ post.parentId }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ post.type }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ post.status }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ post.content }}</td>
-            </tr>
-            <tr>
-                <th>Metatitle</th>
-                <td>{{ post.metaTitle }}</td>
-            </tr>
-            <tr>
-                <th>Metadescription</th>
-                <td>{{ post.metaDescription }}</td>
-            </tr>
-            <tr>
-                <th>Createdat</th>
-                <td>{% if post.createdAt %}{{ post.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if post.updatedAt %}{{ post.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block content %}
+    <article class="markdown-body">
+        <h1>{{ post.title }}</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <ul class="list-inline">
+            <li><i class="fa fa-clock-o"></i> {% if post.publishedAt %}<time pubdate="{{ post.publishedAt|date('Y-m-d H:i:s') }}">{{ post.publishedAt|date('Y.m.d') }}</time>{% endif %}</li>
+            <li><i class="fa fa-pencil"></i> {% if post.updatedAt %}<time pubdate="{{ post.updatedAt|date('Y-m-d H:i:s') }}">{{ post.updatedAt|date('Y.m.d') }}</time>{% endif %}</li>
+            <li>{% if true %}<a href="{{ path('post_edit', { 'id': post.id }) }}"><i class="fa fa-pencil"></i> 編集</a>{% endif %}</li>
+        </ul>
+
+        {# <div>{{ post.content }}</div> #}
+        <div>{{ post.content|markdown('default') }}</div>
+    </article>
 {% endblock %}
+
+{% block article %}
+{% endblock %}
+
+{% block referenceLink %}
+    <aside>
+        {# 参考リンク #}
+    </aside>
+{% endblock %}
+
+{% block relatedLink %}
+    <aside>
+        {# 関連記事 #}
+    </aside>
+{% endblock %}
+
+{% block aroundLink %}
+    <aside>
+        {# 前後記事リンク #}
+    </aside>
+{% endblock %}
+
+{% block commentsList %}
+    <aside>
+        <h3>コメント一覧</h3>
+        <div>名前</div>
+        <div>内容</div>
+    </aside>
+{% endblock %}
+
+{% block commentsPost %}
+    <aside>
+        {# コメント投稿 #}
+    </aside>
+{% endblock %}
+

@@ -16,14 +16,14 @@ abstract class AppEntity
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="CREATED_AT", type="datetime", nullable=false)
+     * @ORM\Column(name="created_at", type="datetime", nullable=false, options={"comment":"作成日時"})
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="UPDATED_AT", type="datetime", nullable=false)
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false, options={"comment":"更新日時"})
      */
     private $updatedAt;
 

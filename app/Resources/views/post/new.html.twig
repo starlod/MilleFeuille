@@ -1,16 +1,14 @@
 {% extends '::layout.html.twig' %}
 
-{% block article %}
-    <h1>Post creation</h1>
+{% block title %}{{ 'post.title.new'|trans }}{% endblock %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+{% block content %}
+    <h1>{{ 'post.title.new'|trans }}</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    {% include '::post/_form.html.twig' %}
+{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar col-sm-3">
+</div>
 {% endblock %}

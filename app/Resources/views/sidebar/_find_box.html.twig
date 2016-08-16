@@ -1,0 +1,10 @@
+{# サイト内検索 #}
+<aside class="sidebar_widget sidebar_find_widget">
+    <h3 class="sidebar_widget_title">サイト内検索</h3>
+    <div class="sidebar_widget_content">
+        {{ form_start(findForm, {'method': 'POST'}) }}
+            {{ form_widget(findForm.content, {'attr': {'class': 'text-find'}}) }}
+            <input type="submit" id="btn-find" class="btn-find" value="&#xf002;">
+        {{ form_end(findForm) }}
+    </div>
+</aside>
