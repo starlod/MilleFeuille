@@ -37,7 +37,6 @@ bash 'selinux' do
   user 'root'
   code <<-EOC
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
-    setenforce 0
   EOC
 end
 
@@ -62,7 +61,7 @@ package 'php' do
   options "--enablerepo=remi --enablerepo=remi-php71"
 end
 
-%w(php-openssl php-common php-mbstring php-xml).each do |pkg|
+%w(php-openssl php-devel php-common php-mbstring php-xml php-cli php-mysql php-phpunit-PHPUnit php-pecl-xdebug php-fpm php-gd php-gmp php-mcrypt php-opcache php-pdo php-intl php-pear).each do |pkg|
   package pkg do
     action :install
     options "--enablerepo=remi --enablerepo=remi-php71"
