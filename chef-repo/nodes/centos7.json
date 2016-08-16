@@ -1,0 +1,12 @@
+{
+  "httpd": {
+    "port": 80,
+    "public": "/vagrant/MilleFeuille/web"
+  },
+  "run_list": [
+    "recipe[hello]"
+  ],
+  "automatic": {
+    "ipaddress": "centos7"
+  }
+}
