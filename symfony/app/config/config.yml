@@ -32,12 +32,19 @@ framework:
         save_path:   "/var/lib/php/sessions"
     fragments:       ~
     http_method_override: true
-    assets: ~
+    assets:
+        version: '%app_version%'
+        version_format: '%%s?version=%%s'
+        packages:
+            img:
+                base_path: /app/images/
 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        version: "%app_version%"
 
 # Doctrine Configuration
 doctrine:

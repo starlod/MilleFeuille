@@ -5,18 +5,24 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets '@AppBundle/Resources/public/css/*' %}
+            <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}">
+            {#
+            {% stylesheets '@AppBundle/Resources/public/css/*' filter="cssrewrite" %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
+            #}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
+            <script src="{{ asset('bundles/app/js/script.js') }}"></script>
+            {#
             {% javascripts '@AppBundle/Resources/public/js/*' output='js/compiled/script.js' %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+            #}
         {% endblock %}
     </body>
 </html>
