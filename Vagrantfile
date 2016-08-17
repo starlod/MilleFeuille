@@ -52,10 +52,10 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "./", "/vagrant",
-      :owner => "apache",
+      :owner => "vagrant",
       :group => "apache",
-      :mount_options => ["dmode=775,fmode=775"]
-      
+      :mount_options => ["dmode=775,fmode=664"]
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
