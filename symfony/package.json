@@ -1,0 +1,28 @@
+{
+  "name": "symfony",
+  "version": "0.0.0",
+  "description": "Symfony Standard Edition ========================",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-postcss": "~6.1.1",
+    "gulp-sass": "~2.3.2",
+    "postcss-cssnext": "~2.7.0",
+    "es6-promise": "~3.2.1",
+    "gulp-autoprefixer": "~3.1.1",
+    "gulp-typescript": "~2.13.6",
+    "gulp-concat": "~2.6.0",
+    "gulp-uglify": "~2.0.0",
+    "gulp-plumber": "~1.1.0",
+    "gulp-header": "~1.8.8"
+  }
+}

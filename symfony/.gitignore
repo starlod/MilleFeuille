@@ -1,3 +1,6 @@
+# Nodejs
+/node_modules
+
 # Cache and logs (Symfony3)
 /var/*
 !/var/cache

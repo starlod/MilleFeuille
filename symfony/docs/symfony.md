@@ -126,14 +126,14 @@ rm -rf var/cache/*
 rm -rf var/logs/*
 rm -rf var/sessions/*
 
-APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1`
-sudo chmod +a "$APACHEUSER allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
-sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" var/cache var/logs
 
+sudo mkdir /var/lib/php/sessions
+sudo chown -R root:apache /var/lib/php/sessions
+sudo chmod -R 777 /var/lib/php/sessions
 
-rm -rf var/cache/*
-rm -rf var/logs/*
-
-APACHEUSER=`ps aux | grep -E '[a]pache|[h]ttpd' | grep -v root | head -1 | cut -d\  -f1`
-sudo setfacl -R -m u:$APACHEUSER:rwX -m u:`whoami`:rwX var/cache var/logs
-sudo setfacl -dR -m u:$APACHEUSER:rwX -m u:`whoami`:rwX var/cache var/logs
+framework:
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        #save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   "/var/lib/php/sessions"
