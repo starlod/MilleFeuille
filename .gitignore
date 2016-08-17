@@ -3,3 +3,7 @@
 .DS_Store
 Thumbs.db
 Session.vim
+
+/cookbooks/
+/.vagrant
+/vendor

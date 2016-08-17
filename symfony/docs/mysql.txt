@@ -1,0 +1,11 @@
+sudo grep 'A temporary password is generated for' /var/log/mysqld.log
+
+mysql -u root -ptjWzy2%cDieW
+
+Network7932!
+
+## アンインストール
+
+sudo yum -y remove mariadb-libs
+sudo yum -y remove mysql*
+sudo rm -rf /var/lib/mysql/

@@ -28,6 +28,19 @@ Vagrant.configure("2") do |config|
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
 
+  config.omnibus.chef_version = :latest
+  # config.vm.provision "chef_solo" do |chef|
+  #   chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
+  #   chef.run_list = [
+  #     "hello",
+  #     "hello::mysql",
+  #     "hello::php",
+  #     "hello::httpd",
+  #     "hello::node",
+  #     "hello::others"
+  #   ]
+  # end
+
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
@@ -37,7 +50,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "../source", "/vagrant"
+  # config.vm.synced_folder "../data", "/vagrant_data"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
