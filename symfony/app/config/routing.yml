@@ -3,3 +3,7 @@ app:
     type:     annotation
     prefix:   /
 
+app_post:
+    resource: "@AppBundle/Controller/PostController.php"
+    type: rest
+    prefix: /api

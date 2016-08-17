@@ -28,7 +28,8 @@ framework:
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        #save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   "/var/lib/php/sessions"
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -67,3 +68,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ ]
+    filters:
+        cssrewrite: ~
+
+fos_rest:
+    view:
+        view_response_listener: force

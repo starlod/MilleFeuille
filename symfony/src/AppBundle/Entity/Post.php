@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -45,6 +46,7 @@ class Post extends AppEntity
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -76,6 +78,13 @@ class Post extends AppEntity
      * @ORM\Column(name="published_at", type="datetime", nullable=true)
      */
     private $publishedAt;
+
+    /**
+     * @var Comment[]
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"all"})
+     */
+    private $comments;
 
 
     /**

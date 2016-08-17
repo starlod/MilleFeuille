@@ -8,14 +8,83 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Post;
 use AppBundle\Form\PostType;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Routing\ClassResourceInterface;
 
 /**
  * Post controller.
  *
  * @Route("/post")
  */
-class PostController extends Controller
+class PostController extends FOSRestController implements ClassResourceInterface
 {
+    // get collection of posts
+    public function cgetAction()
+    {
+        $posts = $this->getRepository()->findAll();
+
+        return $posts;
+    }
+
+    // get the post
+    public function getAction($id)
+    {
+        $post = $this->getRepository()->find($id);
+
+        return $post;
+    }
+
+    // create new post
+    public function postAction(Request $request)
+    {
+        $form = $this->createForm(new PostType(), $post = new Post(), [
+            'csrf_protection' => false,
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+
+            return $post;
+        }
+
+        return $form;
+    }
+
+    // get collection of comments under the post
+    public function getCommentsAction($id)
+    {
+        $comments = $this->getRepository()->find($id)->getComments();
+
+        return $comments;
+    }
+
+    // create new comment under the post
+    public function postCommentAction($id, Request $request)
+    {
+        $comment = new Comment();
+        $comment->setPost($this->getRepository()->find($id));
+
+        $form = $this->createForm(new CommentType(), $comment, [
+            'csrf_protection' => false,
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $comment;
+        }
+
+        return $form;
+    }
+
     /**
      * Lists all Post entities.
      *
@@ -24,9 +93,7 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $posts = $em->getRepository('AppBundle:Post')->findAll();
+        $posts = $this->getRepository()->findAll();
 
         return $this->render('post/index.html.twig', array(
             'posts' => $posts,
@@ -136,5 +203,10 @@ class PostController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function getRepository()
+    {
+        return $this->getDoctrine()->getManager()->getRepository('AppBundle:Post');
     }
 }
