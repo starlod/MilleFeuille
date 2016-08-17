@@ -109,15 +109,15 @@ php bin/console cache:clear --env=prod --no-debug
 
 ```
 # アクティブなユーザーかチェックする
-$ php app/console fos:user:activate
+$ php bin/console fos:user:activate
 # ユーザーのパスワードを変更する
-$ php app/console fos:user:change-password
+$ php bin/console fos:user:change-password
 # アクティブなユーザーを作成する
-$ php app/console fos:user:create
+$ php bin/console fos:user:create
 # Deactivate a user
-$ php app/console fos:user:deactivate
+$ php bin/console fos:user:deactivate
 # Demote a user by removing a role
-$ php app/console fos:user:demote
+$ php bin/console fos:user:demote
 # Promotes a user by adding a role
-$ php app/console fos:user:promote
+$ php bin/console fos:user:promote
 ```
