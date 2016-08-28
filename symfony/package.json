@@ -23,6 +23,9 @@
     "gulp-concat": "~2.6.0",
     "gulp-uglify": "~2.0.0",
     "gulp-plumber": "~1.1.0",
-    "gulp-header": "~1.8.8"
+    "gulp-header": "~1.8.8",
+    "typescript": "~1.8.10",
+    "cssnano": "~3.7.4",
+    "gulp-sourcemaps": "~1.6.0"
   }
 }

@@ -25,7 +25,7 @@
     "recipe[hello]",
     "recipe[hello::mysql]",
     "recipe[hello::ruby]",
-    "recipe[hello::php]",
+    "recipe[hello::php7]",
     "recipe[hello::httpd]",
     "recipe[hello::nodejs]",
     "recipe[hello::others]"

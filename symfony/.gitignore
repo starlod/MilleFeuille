@@ -1,6 +1,9 @@
 # Nodejs
 /node_modules
 
+# Typings
+/typings
+
 # Cache and logs (Symfony3)
 /var/*
 !/var/cache
@@ -25,6 +28,8 @@
 /vendor/
 
 # Assets and user uploads
+/src/AppBundle/Resources/public/css/
+/src/AppBundle/Resources/public/js/
 /web/bundles/
 /web/assets/
 /web/css/
