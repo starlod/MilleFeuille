@@ -1,60 +1,42 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
-    <h1>Post</h1>
+{% block title %}{{ post.title }}{% endblock %}
+{% block page_title %}{{ post.title }}{% endblock %}
+{% block page_subtitle %}
+  {{ post.publishedAt|date('Y.m.d') }}
+  @starlod_twtr
+  <i class="fa fa-folder-open-o" aria-hidden="true"></i>PHP
+{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ post.id }}</td>
-            </tr>
-            <tr>
-                <th>Parentid</th>
-                <td>{{ post.parentId }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ post.type }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ post.status }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ post.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ post.content }}</td>
-            </tr>
-            <tr>
-                <th>Metatitle</th>
-                <td>{{ post.metaTitle }}</td>
-            </tr>
-            <tr>
-                <th>Metadescription</th>
-                <td>{{ post.metaDescription }}</td>
-            </tr>
-            <tr>
-                <th>Publishedat</th>
-                <td>{% if post.publishedAt %}{{ post.publishedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block page_content %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+  {% if post %}
+    <div class="columns">
+        <div class="column">
+
+          <div class="card is-fullwidth">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/809x500" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-12"><a href="{{ path('post_show', {'id': post.id}) }}">{{ post.title }}</a></p>
+                </div>
+              </div>
+
+              <div class="content">
+                {{ post.content }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  {% else %}
+    <p>新しい投稿はありません。</p>
+  {% endif %}
+
 {% endblock %}

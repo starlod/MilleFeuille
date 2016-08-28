@@ -15,17 +15,13 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('parentId')
-            ->add('type')
-            ->add('status')
             ->add('title')
             ->add('content')
             ->add('metaTitle')
             ->add('metaDescription')
-            ->add('publishedAt', 'datetime')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

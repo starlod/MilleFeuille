@@ -1,16 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
-    <h1>Post creation</h1>
+{% block title %}{{ post.title }}{% endblock %}
+{% block page_title %}{{ post.title }}{% endblock %}
+{% block page_subtitle %}
+{% endblock %}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+{% block page_content %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-    </ul>
+  <div class="columns">
+      <div class="column">
+
+        <div class="card is-fullwidth">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                {% include 'post/_form.html.twig' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
 {% endblock %}

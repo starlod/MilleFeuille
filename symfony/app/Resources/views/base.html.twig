@@ -15,7 +15,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block header %}{% include '_header.html.twig' %}{% endblock %}
+            {% block main %}{% endblock %}
+            {% block footer %}{% include '_footer.html.twig' %}{% endblock %}
+        {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/script.js') }}"></script>
             {#

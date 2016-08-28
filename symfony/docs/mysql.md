@@ -13,4 +13,4 @@ sudo rm -rf /var/lib/mysql/
 ## データベースの作成＆ユーザーの作成
 
 CREATE DATABASE symfony;
-grant all privileges on symfony.* to dbuser@127.0.0.1 identified by 'Network7932!';
+grant all privileges on symfony.* to dbuser@"%" identified by 'Network7932!';

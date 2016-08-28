@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+
+  <div id="post-title" class="column">
+    {{ form_label(form.title, null, { 'label_attr': {'class': 'sr-only'} }) }}
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title, { 'attr': {'class': 'input', 'placeholder': 'タイトルを入力してください。'} }) }}
+  </div>
+  <div id="post-content" class="column">
+    {{ form_label(form.content, null, { 'label_attr': {'class': 'sr-only'} }) }}
+    {{ form_errors(form.content) }}
+    {{ form_widget(form.content, { 'attr': {'class': 'textarea'} }) }}
+  </div>
+  <div id="post-meta-title" class="column">
+    {{ form_label(form.metaTitle, null, { 'label_attr': {'class': 'sr-only'} }) }}
+    {{ form_errors(form.metaTitle) }}
+    {{ form_widget(form.metaTitle, { 'attr': {'class': 'input'} }) }}
+  </div>
+  <div id="post-meta-content" class="column">
+    {{ form_label(form.metaDescription, null, { 'label_attr': {'class': 'sr-only'} }) }}
+    {{ form_errors(form.metaDescription) }}
+    {{ form_widget(form.metaDescription, { 'attr': {'class': 'textarea'} }) }}
+  </div>
+  <div class="column">
+    <input type="submit" class="button is-primary" value="Create" />
+  </div>
+{{ form_end(form) }}

@@ -1,5 +1,29 @@
 @charset "UTF-8";
 
-body {
-  background-color: #ccc;
+@import "utilities/variables";
+@import "../../../../../node_modules/font-awesome/scss/font-awesome";
+@import "../../../../../node_modules/bulma/bulma";
+@import "utilities/spaces";
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+html, body, .footer {
+    // background-color: #323232;
+}
+
+header {
+    // background: #e0e0e0;
+}
+
+main {
+    // background: #e0e0e0;
 }

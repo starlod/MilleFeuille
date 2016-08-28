@@ -1,21 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
-    <h1>Post edit</h1>
+{% block title %}{{ post.title }}{% endblock %}
+{% block page_title %}{{ post.title }}{% endblock %}
+{% block page_subtitle %}
+{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{% block page_content %}
 
-    <ul>
-        <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+  <div class="columns">
+      <div class="column">
+
+        <div class="card is-fullwidth">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                {% include 'post/_form.html.twig' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
 {% endblock %}
