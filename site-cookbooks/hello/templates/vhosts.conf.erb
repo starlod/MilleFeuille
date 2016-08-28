@@ -1,0 +1,10 @@
+NameVirtualHost *:<%= node['httpd']['port'] %>
+
+<VirtualHost *:<%= node['httpd']['port'] %>>
+  DocumentRoot <%= node['httpd']['public'] %>
+
+  <Directory "<%= node['httpd']['public'] %>">
+    AllowOverride All
+    Require all granted
+  </Directory>
+</VirtualHost>

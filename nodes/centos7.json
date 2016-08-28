@@ -1,0 +1,36 @@
+{
+  "mysql": {
+    "root": {
+      "password": "Network7932!"
+    }
+  },
+  "httpd": {
+    "port": 80,
+    "public": "/vagrant/symfony/web"
+  },
+  "ruby": {
+    "version": "2.3.1",
+    "versions": [
+      {
+        "version": "2.3.1",
+        "global": "true"
+      }
+    ]
+  },
+  "run_list": [
+    "recipe[selinux::disabled]",
+    "recipe[nodejs]",
+    "recipe[rbenv]",
+    "recipe[ruby_build]",
+    "recipe[hello]",
+    "recipe[hello::mysql]",
+    "recipe[hello::ruby]",
+    "recipe[hello::php7]",
+    "recipe[hello::httpd]",
+    "recipe[hello::nodejs]",
+    "recipe[hello::others]"
+  ],
+  "automatic": {
+    "ipaddress": "centos7"
+  }
+}

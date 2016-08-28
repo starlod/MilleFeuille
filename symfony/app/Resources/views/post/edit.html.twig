@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+{% block page_title %}{{ post.title }}{% endblock %}
+{% block page_subtitle %}
+{% endblock %}
+
+{% block page_content %}
+
+  <div class="columns">
+      <div class="column">
+
+        <div class="card is-fullwidth">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                {% include 'post/_form.html.twig' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+{% endblock %}

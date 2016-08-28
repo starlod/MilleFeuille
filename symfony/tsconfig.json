@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "umd",
+        "jsx": "react",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false
+    },
+    "compileOnSave": false,
+    "exclude": [
+        "node_modules"
+    ]
+}

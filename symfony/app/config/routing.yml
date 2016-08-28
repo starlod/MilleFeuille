@@ -1,0 +1,9 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app_post:
+    resource: "@AppBundle/Controller/PostController.php"
+    type: rest
+    prefix: /api
