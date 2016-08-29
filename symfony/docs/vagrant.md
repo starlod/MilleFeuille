@@ -19,6 +19,9 @@ $ vagrant destroy
 仮想マシンにログイン
 $ vagrant ssh
 
+$ vagrant ssh-config --host [host-name] >> ~/.ssh/config
+$ ssh [host-name]
+
 $ VBoxManage -v
 5.1.0r108711
 
@@ -35,3 +38,5 @@ $ gem i chef --no-ri --no-rdoc
 
 
 $ knife solo init chef-repo
+$ knife solo prepare centos7
+$ knife solo cook centos7

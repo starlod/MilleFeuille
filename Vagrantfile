@@ -28,15 +28,18 @@ Vagrant.configure("2") do |config|
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
 
+  config.ssh.insert_key = false
+
   config.omnibus.chef_version = :latest
   # config.vm.provision "chef_solo" do |chef|
   #   chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
   #   chef.run_list = [
   #     "hello",
   #     "hello::mysql",
-  #     "hello::php",
-  #     "hello::httpd",
-  #     "hello::node",
+  #     "hello::php7",
+  #     "hello::nginx",
+  #     "hello::nodejs",
+  #     "hello::ruby",
   #     "hello::others"
   #   ]
   # end
@@ -57,7 +60,7 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder "./", "/vagrant",
       :owner => "vagrant",
-      :group => "apache",
+      :group => "vagrant",
       :mount_options => ["dmode=775,fmode=664"]
 
   # Provider-specific configuration so you can fine-tune various

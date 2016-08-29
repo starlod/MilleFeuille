@@ -15,5 +15,6 @@ bash 'typescript' do
   code <<-EOC
     npm install -g typescript
     npm install -g gulp
+    npm install -g dtsm
   EOC
 end

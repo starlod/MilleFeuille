@@ -137,3 +137,10 @@ framework:
         handler_id:  session.handler.native_file
         #save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
         save_path:   "/var/lib/php/sessions"
+
+
+* 初回
+php bin/console assets:install --symlink
+php bin/console cache:clear --no-warmup
+npm install
+dtsm install

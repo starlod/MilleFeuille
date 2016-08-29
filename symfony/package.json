@@ -26,6 +26,8 @@
     "gulp-header": "~1.8.8",
     "typescript": "~1.8.10",
     "cssnano": "~3.7.4",
-    "gulp-sourcemaps": "~1.6.0"
+    "gulp-sourcemaps": "~1.6.0",
+    "font-awesome": "~4.6.3",
+    "bulma": "~0.1.2"
   }
 }
