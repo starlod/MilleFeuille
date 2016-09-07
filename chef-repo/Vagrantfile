@@ -1,0 +1,58 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.ssh.insert_key = false
+
+  config.omnibus.chef_version = :latest
+  config.berkshelf.enabled = false
+  config.vm.provision "chef_solo" do |chef|
+    chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
+    chef.custom_config_path = "./Vagrantfile.chef"
+    chef.run_list = [
+      "selinux::disabled",
+      "millefeuille",
+      "millefeuille::php",
+      "millefeuille::mysql57",
+      "millefeuille::nginx",
+      "millefeuille::firewalld",
+    ]
+    chef.json = {
+      "yum": {
+        "remi-php71": {
+          "repositoryid": "remi-php71",
+          "baseurl": "http://rpms.famillecollet.com/enterprise/7/php71/x86_64/",
+          "description": "Les RPM de remi de PHP 7 pour Enterprise Linux 7 - $basearch",
+          "mirrorlist": "http://rpms.famillecollet.com/enterprise/7/php71/mirror"
+        }
+      },
+      "yum-remi": {
+        "repositories": [
+          "remi",
+          "remi-php71"
+        ]
+      }
+    }
+  end
+  
+  # 共有フォルダ
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "../symfony", "/var/www/html/symfony", create: true
+
+  # vagrant-vbguestプラグインが入っている場合、自動更新を無効にする設定
+  #if Vagrant.has_plugin?("vagrant-vbguest") then
+  #  config.vbguest.auto_update = false
+  #end
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
+end

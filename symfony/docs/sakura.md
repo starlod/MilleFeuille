@@ -272,7 +272,7 @@ default_password_lifetime = 0
 ## PHP
 
 # yum -y remove php*
-# yum -y --enablerepo=remi-php71 install php php-cli php-devel php-common php-mbstring php-mysqlnd php-fpm php-gd php-gmp php-mcrypt php-opcache php-pdo php-xml php-intl php-pear
+# yum -y --enablerepo=remi-php71 install php php-pecl-apcu php-cli php-devel php-common php-mbstring php-mysqlnd php-fpm php-gd php-gmp php-opcache php-pdo php-xml php-intl php-pear
 # php -v
 PHP 7.1.0beta2 (cli) (built: Aug  3 2016 11:59:34) ( NTS )
 Copyright (c) 1997-2016 The PHP Group

@@ -40,3 +40,36 @@ $ gem i chef --no-ri --no-rdoc
 $ knife solo init chef-repo
 $ knife solo prepare centos7
 $ knife solo cook centos7
+
+$ cd ~/Projects/dev
+$ chef exec knife solo init chef-repo
+$ cd chef-repo
+$ vagrant init centos/7
+$ chef exec vagrant up
+$ chef exec vagrant ssh-config --host dev >> ~/.ssh/config
+$ chef exec knife solo prepare dev
+$ chef exec knife cookbook create millefeuille -o site-cookbooks/
+$ chef exec knife solo cook centos7
+
+$ chef exec berks vendor cookbooks
+$ chef exec vagrant provision
+
+## cookbook
+
+```
+* 一覧
+$ chef exec knife cookbook site list
+
+* 名前を指定して検索
+$ chef exec knife cookbook site search apache2
+
+* クックブックの情報を見る
+$ chef exec knife cookbook site show apache2
+
+$ chef exec knife cookbook site download apache2
+$ chef exec knife cookbook site install apache2
+
+$ chef exec knife cookbook site download git
+$ chef exec knife cookbook site install git
+
+```
