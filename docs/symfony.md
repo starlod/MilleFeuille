@@ -144,3 +144,9 @@ php bin/console assets:install --symlink
 php bin/console cache:clear --no-warmup
 npm install
 dtsm install
+
+
+dev d:s:d -f
+dev d:s:c
+
+dev d:s:u -f

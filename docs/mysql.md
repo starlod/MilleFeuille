@@ -1,16 +1,17 @@
+# 初期rootパスワード
 sudo grep 'A temporary password is generated for' /var/log/mysqld.log
 
-mysql -u root -pkj0aLJuuLZ_p
+# 初期設定
 
-Network7932!
+mysql_secure_installation
 
-## アンインストール
+# 文字コード設定確認
 
-sudo yum -y remove mariadb-libs
-sudo yum -y remove mysql*
-sudo rm -rf /var/lib/mysql/
+show variables like "chara%";
 
 ## データベースの作成＆ユーザーの作成
 
+DROP DATABASE IF EXISTS symfony;
 CREATE DATABASE symfony;
 grant all privileges on symfony.* to dbuser@"%" identified by 'Network7932!';
+show create database symfony;

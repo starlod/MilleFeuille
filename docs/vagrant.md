@@ -31,11 +31,9 @@ Vagrant 1.8.1
 $ vagrant plugin install vagrant-omnibus
 $ vagrant plugin install vagrant-vbguest
 $ vagrant plugin install vagrant-vbox-snapshot
+$ vagrant plugin install vagrant-global-status 
 
-Chef, kinife-soloのインストール
-
-$ gem i chef --no-ri --no-rdoc
-
+Chef DKをインストールしておく。
 
 $ knife solo init chef-repo
 $ knife solo prepare centos7
@@ -46,10 +44,10 @@ $ chef exec knife solo init chef-repo
 $ cd chef-repo
 $ vagrant init centos/7
 $ chef exec vagrant up
-$ chef exec vagrant ssh-config --host dev >> ~/.ssh/config
+$ chef exec vagrant ssh-config --host node >> ~/.ssh/config
 $ chef exec knife solo prepare dev
-$ chef exec knife cookbook create millefeuille -o site-cookbooks/
-$ chef exec knife solo cook centos7
+$ chef exec knife cookbook create node -o site-cookbooks/
+$ chef exec knife solo cook node
 
 $ chef exec berks vendor cookbooks
 $ chef exec vagrant provision
@@ -73,3 +71,14 @@ $ chef exec knife cookbook site download git
 $ chef exec knife cookbook site install git
 
 ```
+
+## 起動しているVMを一覧する
+
+$ vagrant global-status
+
+## スナップショット
+
+vagrant snapshot take snap-name
+vagrant snapshot list
+vagrant snapshot go snap-name
+vagrant snapshot delete snap-name
