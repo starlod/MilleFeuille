@@ -30,6 +30,7 @@
 # Assets and user uploads
 /src/AppBundle/Resources/public/css/
 /src/AppBundle/Resources/public/js/
+/src/AppBundle/Resources/public/fonts/
 /web/bundles/
 /web/assets/
 /web/css/

@@ -1,0 +1,58 @@
+DEPENDENCIES
+  git
+  nodejs
+  rbenv
+  selinux
+  yum
+  yum-cron
+  yum-epel
+  yum-remi
+
+GRAPH
+  apt (4.0.2)
+    compat_resource (>= 12.10)
+  ark (1.2.0)
+    build-essential (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+    windows (>= 0.0.0)
+  build-essential (6.0.3)
+    compat_resource (>= 12.10)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  chef_handler (1.4.0)
+  compat_resource (12.10.7)
+  dmg (2.4.0)
+  git (4.6.0)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  homebrew (2.1.0)
+    build-essential (>= 2.1.2)
+  mingw (1.2.4)
+    compat_resource (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+  nodejs (2.4.4)
+    apt (>= 0.0.0)
+    ark (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    homebrew (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  ohai (4.2.0)
+    compat_resource (>= 12.10)
+  rbenv (1.7.1)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    git (>= 0.0.0)
+    ohai (>= 1.1)
+  selinux (0.9.0)
+  seven_zip (2.0.1)
+    windows (>= 1.2.2)
+  windows (1.44.1)
+    chef_handler (>= 0.0.0)
+  yum (3.11.0)
+  yum-cron (0.1.1)
+  yum-epel (0.7.0)
+    yum (>= 3.6.3)
+  yum-remi (0.1.0)
+    yum (>= 0.0.0)

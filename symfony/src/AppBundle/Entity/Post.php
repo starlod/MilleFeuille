@@ -32,16 +32,16 @@ class Post extends AppEntity
     /**
      * @var int
      *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\Column(name="type", type="integer", options={"default" = 0})
      */
-    private $type;
+    private $type = 0;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="status", type="integer")
+     * @ORM\Column(name="status", type="integer", options={"default" = 0})
      */
-    private $status;
+    private $status = 0;
 
     /**
      * @var string
@@ -61,14 +61,14 @@ class Post extends AppEntity
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_title", type="string", length=255)
+     * @ORM\Column(name="meta_title", type="string", length=255, nullable=true)
      */
     private $metaTitle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="meta_description", type="text")
+     * @ORM\Column(name="meta_description", type="text", nullable=true)
      */
     private $metaDescription;
 
