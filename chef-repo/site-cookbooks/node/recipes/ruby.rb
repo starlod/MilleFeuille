@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: millefeuille
+# Cookbook Name:: node
 # Recipe:: ruby
 #
 # Copyright 2016, YOUR_COMPANY_NAME

@@ -1,9 +1,11 @@
 source "https://api.berkshelf.com"
 
 cookbook 'yum'
+cookbook 'yum-cron'
 cookbook 'yum-remi'
 cookbook 'yum-epel'
 cookbook 'rbenv'
 cookbook 'nodejs'
 cookbook 'selinux'
-cookbook 'nginx'
+cookbook 'git'
+

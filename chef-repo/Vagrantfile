@@ -8,6 +8,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "centos/7"
 
+  #config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "private_network", ip: "192.168.33.10"
 
   config.ssh.insert_key = false
@@ -18,12 +19,15 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = ["./cookbooks", "./site-cookbooks"]
     chef.custom_config_path = "./Vagrantfile.chef"
     chef.run_list = [
-      "selinux::disabled",
-      "millefeuille",
-      "millefeuille::php",
-      "millefeuille::mysql57",
-      "millefeuille::nginx",
-      "millefeuille::firewalld",
+      #"node",
+      #"yum-cron",
+      #"selinux::disabled",
+      #"git",
+      "node::php71",
+      #"node::mysql57",
+      #"node::nginx",
+      #"node::firewalld",
+      #"node::nodejs",
     ]
     chef.json = {
       "yum": {
@@ -39,13 +43,16 @@ Vagrant.configure("2") do |config|
           "remi",
           "remi-php71"
         ]
-      }
+      },
+      "nginx": {
+        "port": 80
+      },
     }
   end
   
   # 共有フォルダ
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "../symfony", "/var/www/html/symfony", create: true
+  config.vm.synced_folder "../symfony", "/var/www/html/symfony", create: true, mount_options: ['dmode=777','fmode=775']
 
   # vagrant-vbguestプラグインが入っている場合、自動更新を無効にする設定
   #if Vagrant.has_plugin?("vagrant-vbguest") then

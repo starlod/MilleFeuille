@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: millefeuille
-# Recipe:: php
+# Cookbook Name:: node
+# Recipe:: php71
 #
 # Copyright 2016, YOUR_COMPANY_NAME
 #
@@ -35,7 +35,6 @@ end
   php-devel
   php-fpm
   php-gmp
-  php-opcache
   php-intl
   php-pear
 ].each do |pkg|
@@ -43,6 +42,19 @@ end
     action :install
     options '--enablerepo=remi-php71'
   end
+end
+
+service "php-fpm" do
+  action [:enable, :start]
+end
+
+template "www.conf" do
+  path "/etc/php-fpm.d/www.conf"
+  owner "root"
+  group "root"
+  mode 0644
+
+  notifies :restart, "service[php-fpm]"
 end
 
 execute "composer-install" do
@@ -55,22 +67,8 @@ execute "symfony-install" do
   not_if { ::File.exists?("/usr/local/bin/symfony")}
 end
 
-
-# package  do
-#   action :install
-#   options "--enablerepo=remi --enablerepo=remi-php71"
-# end
-
-# # php インストール
-# %w[php php-pecl-apcu php-cli php-devel php-common php-mbstring php-mysqlnd php-fpm php-gd php-gmp php-mcrypt php-opcache php-pdo php-xml php-intl php-pear].each do |p|
-#   package p do
-#     action :install
-#     options "--enablerepo=remi --enablerepo=remi-php71"
-#   end
-# end
-
-# template "php.ini" do
-#   path "/etc/php.ini"
-#   source "php.ini.erb"
-#   mode 0644
-# end
+template "php.ini" do
+  path "/etc/php.ini"
+  source "php.ini.erb"
+  mode 0644
+end

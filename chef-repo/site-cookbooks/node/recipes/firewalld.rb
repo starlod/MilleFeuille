@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: millefeuille
+# Cookbook Name:: node
 # Recipe:: firewalld
 #
 # Copyright 2016, YOUR_COMPANY_NAME
@@ -25,3 +25,7 @@ execute "firewalld_port" do
   EOH
   notifies :restart, "service[firewalld]"
 end
+
+# firewall-cmd --add-port=22/tcp --zone=public --permanent
+# firewall-cmd --list-all --zone=public
+# firewall-cmd --get-services
