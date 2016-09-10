@@ -2,45 +2,49 @@
 
 {% block main %}
 
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        {% block header_title %}ミルフィーユ研究所{% endblock %}
-      </h1>
-      <h2 class="subtitle">
-        {% block header_subtitle %}一記事、一記事、丁寧に書き上げました。{% endblock %}
-      </h2>
-    </div>
-  </div>
-</section>
+<div id="contents" class="contents">
 
-<div class="container m-t-md">
-  <div class="tile is-ancestor">
-    <div class="tile is-vertical is-8">
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          {% block header_title %}ミルフィーユ研究所{% endblock %}
+        </h1>
+        <h2 class="subtitle">
+          {% block header_subtitle %}一記事、一記事、丁寧に書き上げました。{% endblock %}
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="container m-t-md">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-danger">
+            <h1 class="title">{% block page_title %}ページタイトル{% endblock %}</h1>
+            <p class="subtitle">{% block page_subtitle %}ページの補足{% endblock %}</p>
+            <div class="content">
+              <!-- Content -->
+              {% block page_content %}ページの内容{% endblock %}
+            </div>
+          </article>
+        </div>
+      </div>
       <div class="tile is-parent">
-        <article class="tile is-child notification is-danger">
-          <h1 class="title">{% block page_title %}ページタイトル{% endblock %}</h1>
-          <p class="subtitle">{% block page_subtitle %}ページの補足{% endblock %}</p>
+        <article class="tile is-child notification is-success">
           <div class="content">
-            <!-- Content -->
-            {% block page_content %}ページの内容{% endblock %}
+            <p class="title">Tall tile</p>
+            <p class="subtitle">With even more content</p>
+            <div class="content">
+              <!-- Content -->
+            </div>
           </div>
         </article>
       </div>
     </div>
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-success">
-        <div class="content">
-          <p class="title">Tall tile</p>
-          <p class="subtitle">With even more content</p>
-          <div class="content">
-            <!-- Content -->
-          </div>
-        </div>
-      </article>
-    </div>
   </div>
+
 </div>
 
 {% endblock %}

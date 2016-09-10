@@ -17,8 +17,8 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('metaTitle')
-            ->add('metaDescription')
+            // ->add('metaTitle')
+            // ->add('metaDescription')
         ;
     }
 

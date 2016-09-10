@@ -16,14 +16,23 @@
     border: 0;
 }
 
-html, body, .footer {
-    // background-color: #323232;
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 header {
     // background: #e0e0e0;
 }
 
-main {
+.contents {
     // background: #e0e0e0;
+    flex: 1;
+}
+
+.comment {
+    display:flex;
 }

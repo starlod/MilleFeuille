@@ -10,6 +10,7 @@
     {{ form_errors(form.content) }}
     {{ form_widget(form.content, { 'attr': {'class': 'textarea'} }) }}
   </div>
+  {#
   <div id="post-meta-title" class="column">
     {{ form_label(form.metaTitle, null, { 'label_attr': {'class': 'sr-only'} }) }}
     {{ form_errors(form.metaTitle) }}
@@ -20,6 +21,7 @@
     {{ form_errors(form.metaDescription) }}
     {{ form_widget(form.metaDescription, { 'attr': {'class': 'textarea'} }) }}
   </div>
+  #}
   <div class="column">
     <input type="submit" class="button is-primary" value="Create" />
   </div>

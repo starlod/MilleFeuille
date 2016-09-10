@@ -37,7 +37,7 @@ class PostController extends FOSRestController implements ClassResourceInterface
     // create new post
     public function postAction(Request $request)
     {
-        $form = $this->createForm(new PostType(), $post = new Post(), [
+        $form = $this->createForm(new PostType(), new Post(), [
             'csrf_protection' => false,
         ]);
 
