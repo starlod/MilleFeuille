@@ -337,5 +337,26 @@ group = nginx
 
 
 # echo "<?php phpinfo() ?>" > /usr/share/nginx/html/info.php
-# usermod -aG nginx starlod
+# usermod -aG starlod nginx
 # chown -R starlod:nginx /usr/share/nginx/html
+
+## Nodejs
+
+sudo yum -y install nodejs npm
+sudo npm i -g cheerio-httpcli
+sudo npm i -g phantomjs
+sudo npm i -g casperjs
+sudo npm i -g gulp
+sudo npm i -g iconv
+sudo npm i -g jschardet
+sudo npm i -g iconv-lite
+sudo npm i -g officegen
+sudo npm i -g twit
+sudo npm i -g fb
+sudo npm i -g apac
+sudo npm i -g node-flickr
+sudo npm i -g youtube-node
+sudo npm i -g bayes
+sudo npm i -g typescript
+sudo npm i -g typings
+sudo npm i -g dtsm
