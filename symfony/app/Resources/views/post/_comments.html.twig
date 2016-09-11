@@ -1,15 +1,14 @@
 {# コメント一覧 #}
 
 <div id="commentBox">
-{#
+
   <div id="commentList">
+    {% for comment in post.getComments() %}
     <div class="comment">
-      <figure class="image is-64x64">
-        <img src="http://placehold.it/64x64">
-      </figure>
-      <span>名前</span>
+      <span>{{ comment.content }} by {{ comment.authorName }}.</span>
     </div>
+    {% endfor %}
   </div>
-#}
+
   {% include 'post/_comment_form.html.twig' %}
 </div>

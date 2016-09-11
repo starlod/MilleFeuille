@@ -19,6 +19,7 @@
   </div>
 
   <div id="tabContent" class="container">
+    {{ form_start(commentForm) }}
     <p class="control">
       <input class="input" type="text" placeholder="名前">
     </p>
@@ -29,6 +30,6 @@
       <button class="button is-primary">Submit</button>
       <button class="button is-link">Clear</button>
     </p>
+    {{ form_end(commentForm) }}
   </div>
-
 </div>
