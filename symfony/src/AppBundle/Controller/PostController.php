@@ -95,9 +95,7 @@ class PostController extends FOSRestController implements ClassResourceInterface
     {
         $posts = $this->getRepository()->findAll();
 
-        return $this->render('post/index.html.twig', array(
-            'posts' => $posts,
-        ));
+        return $this->render('post/index.html.twig', compact('posts'));
     }
 
     /**

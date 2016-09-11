@@ -31,7 +31,7 @@ nodejs_npm "iconv-lite"
 nodejs_npm 'officegen'
 
 # ツイート検索
-# nodejs_npm 'twit'
+nodejs_npm 'twit'
 
 # Facebook API
 nodejs_npm 'fb'

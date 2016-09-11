@@ -15,13 +15,14 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
-            ->add('status')
-            ->add('authorEmail')
-            ->add('authorUrl')
-            ->add('authorIp')
-            ->add('authorId')
-            ->add('metaDescription')
+            // ->add('type')
+            // ->add('status')
+            // ->add('authorEmail')
+            // ->add('authorUrl')
+            // ->add('authorIp')
+            // ->add('authorId')
+            ->add('authorName')
+            ->add('content')
         ;
     }
     

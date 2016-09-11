@@ -128,7 +128,7 @@ rm -rf var/sessions/*
 
 
 sudo mkdir /var/lib/php/sessions
-sudo chown -R root:apache /var/lib/php/sessions
+sudo chown -R root:nginx /var/lib/php/sessions
 sudo chmod -R 777 /var/lib/php/sessions
 
 framework:
@@ -140,13 +140,18 @@ framework:
 
 
 * 初回
+npm install
+composer install
+dtsm install
 php bin/console assets:install --symlink
 php bin/console cache:clear --no-warmup
-npm install
-dtsm install
-
 
 dev d:s:d -f
 dev d:s:c
 
+dev d:g:entities AppBundle
 dev d:s:u -f
+
+sudo chown root:nginx -R /var/lib/php/opcache
+sudo chown root:nginx -R /var/lib/php/session
+sudo chown root:nginx -R /var/lib/php/sessions

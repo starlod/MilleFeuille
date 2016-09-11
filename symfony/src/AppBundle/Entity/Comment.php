@@ -26,14 +26,21 @@ class Comment extends AppEntity
      *
      * @ORM\Column(name="type", type="integer")
      */
-    private $type;
+    private $type = 0;
 
     /**
      * @var int
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    private $status = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author_name", type="string", length=255, nullable=true)
+     */
+    private $authorName;
 
     /**
      * @var string
@@ -62,13 +69,6 @@ class Comment extends AppEntity
      * @ORM\Column(name="author_id", type="string", length=255, nullable=true)
      */
     private $authorId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="meta_description", type="text")
-     */
-    private $metaDescription;
 
     /**
      * @var Post
@@ -234,26 +234,50 @@ class Comment extends AppEntity
     }
 
     /**
-     * Set metaDescription
+     * Set authorName
      *
-     * @param string $metaDescription
+     * @param string $authorName
      *
-     * @return Comments
+     * @return Comment
      */
-    public function setMetaDescription($metaDescription)
+    public function setAuthorName($authorName)
     {
-        $this->metaDescription = $metaDescription;
+        $this->authorName = $authorName;
 
         return $this;
     }
 
     /**
-     * Get metaDescription
+     * Get authorName
      *
      * @return string
      */
-    public function getMetaDescription()
+    public function getAuthorName()
     {
-        return $this->metaDescription;
+        return $this->authorName;
+    }
+
+    /**
+     * Set post
+     *
+     * @param \AppBundle\Entity\Post $post
+     *
+     * @return Comment
+     */
+    public function setPost(\AppBundle\Entity\Post $post)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \AppBundle\Entity\Post
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 }
