@@ -12,22 +12,22 @@
 
   {% if post %}
     <div class="columns">
-        <div class="column">
+        <div id="post" class="column">
 
           <div class="card is-fullwidth">
-            <div class="card-image">
+            <div id="postEyecatch" class="card-image">
               <figure class="image is-4by3">
                 <img src="http://placehold.it/809x500" alt="">
               </figure>
             </div>
-            <div class="card-content">
+            <div id="postTitle" class="card-content">
               <div class="media">
                 <div class="media-content">
                   <p class="title is-12"><a href="{{ path('post_show', {'id': post.id}) }}">{{ post.title }}</a></p>
                 </div>
               </div>
 
-              <div class="content">
+              <div id="postContent" class="content">
                 {{ post.content }}
               </div>
 

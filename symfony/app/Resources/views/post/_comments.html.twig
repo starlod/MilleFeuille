@@ -1,12 +1,40 @@
 {# コメント一覧 #}
-
 <div id="commentBox">
+
+  <p class="control">
+    <span class="select">
+      <select id="commentSort">
+        <option>新しいコメント順</option>
+        <option>古いコメント順</option>
+        <option>コメント評価の高い順</option>
+        <option>コメント評価の低い順</option>
+      </select>
+    </span>
+  </p>
 
   <div id="commentList">
     {% for comment in post.getComments() %}
-    <div class="comment">
-      <span>{{ comment.content }} by {{ comment.authorName }}.</span>
-    </div>
+      <div id="comment-id-1" class="comment is-pending">
+        <figure class="image is-128x128">
+            <img src="http://placehold.it/128x128">
+        </figure>
+        <div id="" class="commentId">
+        </div>
+        <div id="" class="commentAuthor">
+        </div>
+        <div id="commentContent">
+        </div>
+        <span id="good" class="tag is-good" data-comment-id="1">123</span>
+        <span id="bad" class="tag is-bad" data-comment-id="1">4</span>
+        <span class="REMOTE_ADDR">IP</span>
+        <span class="HTTP_USER_AGENT">IE</span>
+        <span class="SPAM">SPAM</span>
+        <span class="BLOCK">BLOCK</span>
+        <span class="DISABLE">DISABLE</span>
+        <span class="ENABLE">ENABLE</span>
+        <span class="EDIT">EDIT</span>
+        <span class="DELETE">DELETE</span>
+      </div>
     {% endfor %}
   </div>
 
