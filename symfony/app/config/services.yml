@@ -7,3 +7,12 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.twig_extension:
+        class: AppBundle\Twig\TwigExtension
+        tags:
+            - { name: twig.extension }
+    cache_driver_second_level:
+        #class: Snc\RedisBundle\Doctrine\Cache\RedisCache
+        class: Doctrine\Common\Cache\RedisCache
+        calls:
+            - [setRedis, ["@snc_redis.cache"]]

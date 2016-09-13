@@ -5,13 +5,13 @@
     <ul>
       <li class="is-active">
         <a>
-          <span class="icon is-small"><i class="fa fa-comment" aria-hidden="true"></i></span>
+          <span class="icon is-small"><i class="fa fa-comment"></i></span>
           <span>コメント</span>
         </a>
       </li>
       <li>
         <a>
-          <span class="icon is-small"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i></span>
+          <span class="icon is-small"><i class="fa fa-file-powerpoint-o"></i></span>
           <span>プレビュー</span>
         </a>
       </li>
@@ -22,6 +22,11 @@
     {{ form_start(commentForm) }}
     <p class="control">
       <input class="input" type="text" placeholder="名前">
+    </p>
+    <p class="control has-icon has-icon-right">
+        <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
+        <i class="fa fa-warning"></i>
+        <span class="help is-danger">This email is invalid</span>
     </p>
     <p class="control">
       <textarea class="textarea" placeholder="コメント"></textarea>

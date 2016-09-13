@@ -360,3 +360,24 @@ sudo npm i -g bayes
 sudo npm i -g typescript
 sudo npm i -g typings
 sudo npm i -g dtsm
+
+## redis
+
+sudo yum -y --enablerepo=remi,epel,remi-php71 install redis php-pecl-redis
+sudo yum install tcl
+
+sudo systemctl start redis
+sudo systemctl enable redis
+
+php -m | grep redis
+
+sudo systemctl restart nginx
+
+composer install --ignore-platform-reqs
+composer require snc/redis-bundle
+
+rm -rf var/cache/*
+
+composer require --dev doctrine/data-fixtures
+composer require --dev doctrine/doctrine-fixtures-bundle
+composer require --dev hautelook/alice-bundle
