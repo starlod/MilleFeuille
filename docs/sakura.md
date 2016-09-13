@@ -378,3 +378,6 @@ composer require snc/redis-bundle
 
 rm -rf var/cache/*
 
+composer require --dev doctrine/data-fixtures
+composer require --dev doctrine/doctrine-fixtures-bundle
+composer require --dev hautelook/alice-bundle
