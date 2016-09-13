@@ -18,3 +18,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # Redis
+    redis_dsn_default: redis://localhost
+    redis_dsn_cache:   redis://localhost/1
+    redis_dsn_session: redis://localhost/2

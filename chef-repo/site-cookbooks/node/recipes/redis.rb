@@ -10,28 +10,19 @@ log "redis install"
 
 include_recipe 'yum::default'
 include_recipe 'yum-epel::default'
+include_recipe 'yum-remi::default'
 
-package "nginx" do
-  action :install
-  options "--enablerepo=epel"
+%W{ redis php-pecl-redis }.each do |pkg|
+  package "#{pkg}" do
+    action :install
+    options "--enablerepo=remi,epel,remi-php71"
+  end
 end
 
-service "nginx" do
+service "redis" do
   action [:enable, :start]
 end
 
-group 'vagrant' do
-  action :modify
-  members 'nginx'
-  append true
+service "nginx" do
+  action :restart
 end
-
-# template "redis.conf" do
-#   owner "root"
-#   group "root"
-#   mode 0644
-
-#   notifies :restart, "service[redis]"
-# end
-
-# cp /etc/nginx/nginx.conf /var/www/html/symfony

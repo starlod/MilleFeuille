@@ -11,7 +11,7 @@ Class Util {
      */
     public static function toPascalcase($str)
     {
-       return strtr(ucwords(strtr($str, ['_' => ' '])), [' ' => '']);
+        return strtr(ucwords(strtr($str, ['_' => ' '])), [' ' => '']);
     }
 
     /**
@@ -22,7 +22,7 @@ Class Util {
      */
     public static function toCamelcase($str)
     {
-       return lcfirst(strtr(ucwords(strtr($str, ['_' => ' '])), [' ' => '']));
+        return lcfirst(strtr(ucwords(strtr($str, ['_' => ' '])), [' ' => '']));
     }
 
     /**
@@ -33,7 +33,7 @@ Class Util {
      */
     public static function toSnakecase($str)
     {
-       return ltrim(strtolower(preg_replace('/[A-Z]/', '_\0', $str)), '_');
+        return ltrim(strtolower(preg_replace('/[A-Z]/', '_\0', $str)), '_');
     }
 
     /**
@@ -77,7 +77,7 @@ Class Util {
         foreach ((array)$needles as $prefix) {
             $len = strlen($prefix);
             if (($len <= $length)
-             && (substr_compare($haystack, $prefix, 0, $len, $case) === 0)
+                && (substr_compare($haystack, $prefix, 0, $len, $case) === 0)
             ) {
                 return true;
             }
@@ -99,7 +99,7 @@ Class Util {
         foreach ((array)$needles as $suffix) {
             $len = strlen($suffix);
             if (($len <= $length)
-             && (substr_compare($haystack, $suffix, -$len, $len, $case) === 0)
+                && (substr_compare($haystack, $suffix, -$len, $len, $case) === 0)
             ) {
                 return true;
             }
@@ -132,7 +132,8 @@ Class Util {
      * @param string $str '2012/04/18 15:55:53'
      * @return int
      */
-    public static function toUnixTime($dateStr) {
+    public static function toUnixTime($dateStr)
+    {
         return strtotime($dateStr);
     }
 
