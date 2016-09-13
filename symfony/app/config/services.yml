@@ -11,4 +11,8 @@ services:
         class: AppBundle\Twig\TwigExtension
         tags:
             - { name: twig.extension }
-            
+    cache_driver_second_level:
+        #class: Snc\RedisBundle\Doctrine\Cache\RedisCache
+        class: Doctrine\Common\Cache\RedisCache
+        calls:
+            - [setRedis, ["@snc_redis.cache"]]

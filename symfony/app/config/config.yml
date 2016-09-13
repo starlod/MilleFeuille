@@ -130,9 +130,6 @@ snc_redis:
         query_cache:
             client: cache
             entity_manager: default
-
-services:
-    cache_driver_second_level:
-        class: Snc\RedisBundle\Doctrine\Cache\RedisCache
-        calls:
-            - [setRedis, [@snc_redis.cache]]
+        second_level_cache:
+            client: cache
+            entity_manager: default
