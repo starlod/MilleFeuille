@@ -133,6 +133,3 @@ snc_redis:
         second_level_cache:
             client: cache
             entity_manager: default
-
-hautelook_alice:
-    locale: ja_JP
