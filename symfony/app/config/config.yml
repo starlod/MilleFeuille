@@ -67,6 +67,20 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        second_level_cache:
+            region_cache_driver:
+                type: service
+                id: cache_driver_second_level
+            region_lock_lifetime: 60
+            log_enabled: true
+            region_lifetime: 300
+            enabled: true
+            regions:
+                default:
+                    lifetime: 60
+                    cache_driver:
+                        type: service
+                        id: cache_driver_second_level
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -116,3 +130,9 @@ snc_redis:
         query_cache:
             client: cache
             entity_manager: default
+
+services:
+    cache_driver_second_level:
+        class: Snc\RedisBundle\Doctrine\Cache\RedisCache
+        calls:
+            - [setRedis, [@snc_redis.cache]]
