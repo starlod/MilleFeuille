@@ -369,6 +369,9 @@ sudo yum install tcl
 sudo systemctl start redis
 sudo systemctl enable redis
 
+redis-cli -v
+redis-cli ping
+
 php -m | grep redis
 
 sudo systemctl restart nginx
