@@ -105,6 +105,7 @@ class EntitiesDataFixtureLoader extends AbstractLoader
     {
         return array(
             '@AppBundle/Resources/fixtures/posts.yml',
+            '@AppBundle/Resources/fixtures/comments.yml',
         );
     }
 
@@ -121,5 +122,16 @@ class EntitiesDataFixtureLoader extends AbstractLoader
     public function comment()
     {
         return $this->comments[array_rand($this->comments)];
+    }
+
+    public function getPost()
+    {
+        $post = $this->getRepository('AppBundle:Post')->getRandomEntity();
+        return $post;
+    }
+
+    private function getRepository($repositoryName)
+    {
+        return $this->container->get('doctrine')->getManager()->getRepository($repositoryName);
     }
 }

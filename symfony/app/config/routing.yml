@@ -3,7 +3,12 @@ app:
     type:     annotation
     prefix:   /
 
-app_post:
+api_posts:
     resource: "@AppBundle/Controller/PostController.php"
     type: rest
     prefix: /api
+
+api_comments:
+    resource: "@AppBundle/Controller/CommentController.php"
+    type: rest
+    prefix: /api/posts/{postId}

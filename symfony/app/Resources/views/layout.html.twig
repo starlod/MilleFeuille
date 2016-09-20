@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block main %}
+{% block layout %}
 
 <div id="contents" class="contents">
 
@@ -17,32 +17,36 @@
     </div>
   </section>
 
-  <div class="container m-t-md">
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
+  {% block main %}
+
+    <div class="container m-t-md">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+              <h1 class="title">{% block page_title %}ページタイトル{% endblock %}</h1>
+              <p class="subtitle">{% block page_subtitle %}ページの補足{% endblock %}</p>
+              <div class="content">
+                <!-- Content -->
+                {% block page_content %}ページの内容{% endblock %}
+              </div>
+            </article>
+          </div>
+        </div>
         <div class="tile is-parent">
-          <article class="tile is-child notification is-danger">
-            <h1 class="title">{% block page_title %}ページタイトル{% endblock %}</h1>
-            <p class="subtitle">{% block page_subtitle %}ページの補足{% endblock %}</p>
+          <article class="tile is-child notification is-success">
             <div class="content">
-              <!-- Content -->
-              {% block page_content %}ページの内容{% endblock %}
+              <p class="title">サイドバー</p>
+              <div class="content">
+                <!-- Content -->
+              </div>
             </div>
           </article>
         </div>
       </div>
-      <div class="tile is-parent">
-        <article class="tile is-child notification is-success">
-          <div class="content">
-            <p class="title">サイドバー</p>
-            <div class="content">
-              <!-- Content -->
-            </div>
-          </div>
-        </article>
-      </div>
     </div>
-  </div>
+
+  {% endblock %}
 
 </div>
 
