@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comments
+ * Comment
  *
  * @ORM\Table(name="comments")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentRepository")
@@ -66,6 +66,13 @@ class Comment extends AppEntity
     /**
      * @var string
      *
+     * @ORM\Column(name="content", type="text", nullable=true)
+     */
+    private $content;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="author_id", type="string", length=255, nullable=true)
      */
     private $authorId;
@@ -77,7 +84,7 @@ class Comment extends AppEntity
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id", nullable=false)
      */
     private $post;
-    
+
 
     /**
      * Get id
@@ -279,5 +286,29 @@ class Comment extends AppEntity
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Comment
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

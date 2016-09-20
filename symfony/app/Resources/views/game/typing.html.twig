@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}タイピングゲーム{% endblock %}
+
+{% block main %}
+
+<div class="columns m-a-md">
+  <div class="column">
+    <div class="box has-text-centered m-b-lg">
+      <p id="target" class="is-huge"></p>
+    </div>
+    <p class="notification is-info is-medium has-text-centered">
+      Letters count: <span id="score"></span>,
+      Miss count: <span id="miss"></span>,
+      Remaining Time: <span id="timer"></span>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('bundles/app/css/typing.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('bundles/app/js/typing.js') }}"></script>
+{% endblock %}

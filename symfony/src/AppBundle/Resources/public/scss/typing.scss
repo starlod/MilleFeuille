@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+@import "../../../../../node_modules/bulma/sass/utilities/variables";
+
+.columns {
+    font-family: 'Courier New', sans-serif;
+    text-align: center;
+}
+
+#target {
+    letter-spacing: 3px;
+}
+
+p.is-huge, span.is-huge {
+    font-size: $size-huge;
+}
+
+p.is-large, span.is-large {
+    font-size: $size-large;
+}
+
+p.is-medium, span.is-medium {
+    font-size: $size-medium;
+}
+
+p.is-normal, span.is-normal {
+    font-size: $size-normal;
+}
+
+p.is-small, span.is-small {
+    font-size: $size-small;
+}

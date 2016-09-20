@@ -22,11 +22,6 @@
         {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/script.js') }}"></script>
-            {#
-            {% javascripts '@AppBundle/Resources/public/js/*' output='js/compiled/script.js' %}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-            #}
         {% endblock %}
     </body>
 </html>

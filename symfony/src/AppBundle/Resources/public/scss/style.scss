@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-@import "utilities/variables";
+@import "utilities/_variables";
 @import "../../../../../node_modules/font-awesome/scss/font-awesome";
 @import "../../../../../node_modules/bulma/bulma";
-@import "utilities/spaces";
+@import "utilities/_spaces";
 
 .sr-only {
     position: absolute;

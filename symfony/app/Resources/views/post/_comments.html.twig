@@ -1,19 +1,22 @@
 {# コメント一覧 #}
 <div id="commentBox">
 
-  <p class="control">
-    <span class="select">
-      <select id="commentSort">
-        <option>新しいコメント順</option>
-        <option>古いコメント順</option>
-        <option>コメント評価の高い順</option>
-        <option>コメント評価の低い順</option>
-      </select>
-    </span>
-  </p>
-
   <div id="commentList">
     {% for comment in post.getComments() %}
+
+      {% if loop.first %}
+        <p class="control">
+          <span class="select">
+            <select id="commentSort">
+              <option>新しいコメント順</option>
+              <option>古いコメント順</option>
+              <option>コメント評価の高い順</option>
+              <option>コメント評価の低い順</option>
+            </select>
+          </span>
+        </p>
+      {% endif %}
+
       <div id="comment-id-1" class="comment is-pending">
         <figure class="image is-128x128">
             <img src="http://placehold.it/128x128">

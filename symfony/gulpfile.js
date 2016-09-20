@@ -2,6 +2,7 @@ require('es6-promise').polyfill();
 
 var gulp = require('gulp');
 var pkg = require('./package.json');
+var del = require('del');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var cssnext = require('postcss-cssnext');
@@ -15,7 +16,7 @@ var plumber = require('gulp-plumber');
 var header = require('gulp-header');
 var project = ts.createProject('tsconfig.json', {
     typescript: typescript,
-    out: 'script.js'
+    // out: 'script.js'
 });
 
 var paths = {
@@ -26,7 +27,16 @@ var paths = {
     'font': './src/AppBundle/Resources/public/fonts/'
 };
 
-gulp.task('scss', function() {
+gulp.task('clean:css', function(cb) {
+    return del([paths.font + '*', paths.css + '*'], { dot: true }, cb);
+});
+
+gulp.task('clean:js', function(cb) {
+    return del([paths.js + '*'], { dot: true }, cb);
+});
+
+// scssコンパイル
+gulp.task('scss', ['clean:css'], function() {
     var processors = [
         cssnext(),
         cssnano()
@@ -35,7 +45,7 @@ gulp.task('scss', function() {
     gulp.src('./node_modules/font-awesome/fonts/*.*')
         .pipe(gulp.dest(paths.font));
 
-    return gulp.src(paths.scss + '**/*.scss')
+    return gulp.src([paths.scss + '**/*.scss', '!' + paths.scss + '**/_*.scss'])
                .pipe(plumber())
                .pipe(sass())
                .pipe(autoprefixer())
@@ -45,8 +55,9 @@ gulp.task('scss', function() {
                .pipe(gulp.dest(paths.css));
 });
 
-gulp.task('ts', function() {
-    return gulp.src(paths.ts + '**/*.{ts,tsx}')
+// TypeScriptコンパイル
+gulp.task('ts', ['clean:js'], function() {
+    return gulp.src([paths.ts + '**/*.{ts,tsx}', '!' + paths.ts + '**/_*.{ts,tsx}'])
                .pipe(plumber())
                .pipe(ts(project))
                .pipe(uglify())

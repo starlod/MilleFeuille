@@ -19,22 +19,26 @@
   </div>
 
   <div id="tabContent" class="container">
-    {{ form_start(commentForm) }}
+    <form action="{{ path('comment_new') }}" method="post">
     <p class="control">
-      <input class="input" type="text" placeholder="名前">
-    </p>
-    <p class="control has-icon has-icon-right">
-        <input class="input is-danger" type="text" placeholder="Email input" value="hello@">
-        <i class="fa fa-warning"></i>
-        <span class="help is-danger">This email is invalid</span>
+        {{ form_label(commentForm.authorName, 'comment.authorName'|trans) }}
+        {{ form_widget(commentForm.authorName, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(commentForm.authorName) }}
     </p>
     <p class="control">
-      <textarea class="textarea" placeholder="コメント"></textarea>
+        {{ form_label(commentForm.authorEmail, 'comment.authorEmail'|trans) }}
+        {{ form_widget(commentForm.authorEmail, {'attr': {'class': 'input'}}) }}
+        {{ form_errors(commentForm.authorEmail) }}
     </p>
     <p class="control">
-      <button class="button is-primary">Submit</button>
-      <button class="button is-link">Clear</button>
+        {{ form_widget(commentForm.content, {'attr': {'class': 'textarea'}}) }}
+        {{ form_errors(commentForm.content) }}
     </p>
-    {{ form_end(commentForm) }}
+    <p class="control">
+        <button class="button is-primary">{{ 'common.button.send'|trans }}</button>
+        <button class="button is-link">{{ 'common.button.clear'|trans }}</button>
+    </p>
+    {{ form_rest(commentForm) }}
+    </form>
   </div>
 </div>

@@ -1,0 +1,17 @@
+# How to use
+# https://github.com/fzaninotto/Faker#formatters
+# https://github.com/nelmio/alice/blob/master/README.md#faker-data
+
+AppBundle\Entity\Comment:
+    comment_{1...201}:
+        type: 0
+        status: 0
+        authorName: <userName()>
+        authorEmail: <email()>
+        authorUrl: <url()>
+        authorIp: <ipv4()>
+        content: <comment()>
+        authorId: <uuid()>
+        post: <getPost()>
+        createdAt: <dateTimeBetween('-10 days', 'now')>
+        updatedAt: <dateTimeBetween($createdAt, 'now')>

@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Post;
+use AppBundle\Entity\Comment;
 use AppBundle\Form\PostType;
+use AppBundle\Form\CommentType;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 
@@ -130,13 +132,16 @@ class PostController extends FOSRestController implements ClassResourceInterface
      * @Route("/{id}", name="post_show")
      * @Method("GET")
      */
-    public function showAction(Post $post)
+    public function showAction($id)
     {
-        $deleteForm = $this->createDeleteForm($post);
+        $post = $this->getRepository()->find($id);
+        $comment = new Comment();
+        $comment->setPost($post);
+        $commentForm = $this->createForm('AppBundle\Form\CommentType', $comment);
 
         return $this->render('post/show.html.twig', array(
             'post' => $post,
-            'delete_form' => $deleteForm->createView(),
+            'commentForm' => $commentForm->createView(),
         ));
     }
 
@@ -203,8 +208,8 @@ class PostController extends FOSRestController implements ClassResourceInterface
         ;
     }
 
-    private function getRepository()
+    private function getRepository($repositoryName = 'AppBundle:Post')
     {
-        return $this->getDoctrine()->getManager()->getRepository('AppBundle:Post');
+        return $this->getDoctrine()->getManager()->getRepository($repositoryName);
     }
 }

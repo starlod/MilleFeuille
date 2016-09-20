@@ -1,0 +1,27 @@
+common:
+    button:
+        index: 一覧
+        find: 検索
+        new: 登録
+        edit: 編集
+        show: 表示
+        detail: 詳細
+        upload: アップロード
+        download: ダウンロード
+        delete: 削除
+        onCreate: 作成する
+        onUpdate: 更新する
+        onRegist: 登録する
+        checkNew: 入力内容を確認する
+        checkEdit: 入力内容を確認する
+        close: 閉じる
+        back: 戻る
+        choice: 選択
+        send: 送信
+        cancel: キャンセル
+        clear: クリア
+
+comment:
+    authorName: 名前
+    authorEmail: Email
+    content: コメント内容

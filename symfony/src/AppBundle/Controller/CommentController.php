@@ -8,14 +8,43 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Comment;
 use AppBundle\Form\CommentType;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Routing\ClassResourceInterface;
 
 /**
  * Comment controller.
  *
  * @Route("/comment")
  */
-class CommentController extends Controller
+class CommentController extends FOSRestController implements ClassResourceInterface
 {
+    // get collection of comments
+    public function cgetAction()
+    {
+        $comments = $this->getRepository()->findAll();
+        return $comments;
+    }
+
+    // get the comment
+    public function getAction($id)
+    {
+        $comment = $this->getRepository()->find($id);
+        return $comment;
+    }
+
+    // create new comment
+    public function commentAction(Request $request)
+    {
+    }
+
+    public function getPostAction($id)
+    {
+        $comment = $this->getRepository()->find($id);
+        $post = $comment->getPost();
+
+        return $post;
+    }
+
     /**
      * Lists all Comment entities.
      *
@@ -136,5 +165,10 @@ class CommentController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function getRepository($repositoryName = 'AppBundle:Comment')
+    {
+        return $this->getDoctrine()->getManager()->getRepository($repositoryName);
     }
 }
