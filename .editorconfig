@@ -8,9 +8,18 @@ indent_size = 2
 trim_trailing_whitespace = true
 insert_final_newline = false
 
-[*.{js}]
+[*.{js, ts}]
 insert_final_newline = true
+indent_size = 4
 
-[*.{md,yml,php,css,sass,scss}]
+[*.{sass}]
+insert_final_newline = false
+indent_size = 4
+
+[*.{css,scss}]
+insert_final_newline = true
+indent_size = 4
+
+[*.{md,yml,php}]
 insert_final_newline = true
 indent_size = 4
