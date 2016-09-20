@@ -338,6 +338,7 @@ group = nginx
 
 # echo "<?php phpinfo() ?>" > /usr/share/nginx/html/info.php
 # usermod -aG starlod nginx
+# usermod -aG nginx starlod
 # chown -R starlod:nginx /usr/share/nginx/html
 
 ## Nodejs
